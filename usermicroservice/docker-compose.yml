@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+
+  user-api:
+    build: ./
+    container_name: user-api
+    networks:
+      - network
+    depends_on:
+      - user-database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-database:6004/cards
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "5004:5004"
+
+  user-database:
+    image: 'postgres:13.2-alpine'
+    restart: always
+    container_name: user-database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=cards
+    ports:
+      - "6004:5432"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
