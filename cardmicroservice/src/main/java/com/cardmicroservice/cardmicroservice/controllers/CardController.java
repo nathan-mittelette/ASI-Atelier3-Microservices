@@ -18,11 +18,6 @@ public class CardController {
         _cardService = cardService;
     }
 
-    @GetMapping
-    public List<Card> getCards() {
-        return _cardService.findAll();
-    }
-
     @GetMapping(value = "{id}")
     public Optional<Card> getCardById(@PathVariable Long id) {
         return _cardService.findById(id);

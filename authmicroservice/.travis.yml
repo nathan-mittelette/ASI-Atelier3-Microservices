@@ -1,0 +1,20 @@
+git:
+  depth: 5
+
+stages:
+  - "Docker"
+
+jobs:
+  include:
+    - stage: "Docker"
+      script:
+        - echo "Docker build ..."
+        - docker build -t api .
+        - echo "Docker login ..."
+        - echo "$docker_hub_password" | docker login -u "$docker_hub_username" --password-stdin
+        - echo "Docker push ..."
+        - docker tag api "$docker_hub_username"/api
+        - docker push "$docker_hub_username"/api
+
+services:
+  - docker
