@@ -37,7 +37,7 @@ public class UserService extends CrudService<User> implements IUserService {
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         try {
             user = this.insertOrUpdate(user);
-            this.cardWebService.createRandomCard(user.getId());
+            this.cardWebService.createRandomCard(userMapper.fromUser(user));
             return user;
         }
         catch (DataIntegrityViolationException e) {

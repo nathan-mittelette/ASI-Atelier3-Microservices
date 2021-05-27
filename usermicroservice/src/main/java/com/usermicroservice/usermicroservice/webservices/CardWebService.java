@@ -1,5 +1,6 @@
 package com.usermicroservice.usermicroservice.webservices;
 
+import com.usermicroservice.usermicroservice.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface CardWebService {
 
     @PostMapping("/cards/createRandom")
-    void createRandomCard(@PathVariable Long id);
+    void createRandomCard(UserDTO userDTO);
 }
