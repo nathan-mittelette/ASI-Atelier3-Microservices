@@ -6,6 +6,7 @@ import com.usermicroservice.usermicroservice.models.User;
 
 public interface IUserService extends ICrudService<User> {
     User createUser(User user);
-    String login(UserLoginDTO userLoginDTO) throws Exception;
     UserDTO getCurrent(UserDTO userDTO);
+    User findUserById(Long id) throws Exception;
+    String login(UserLoginDTO userLoginDTO) throws Exception;
 }

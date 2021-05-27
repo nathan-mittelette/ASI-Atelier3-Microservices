@@ -1,43 +1,50 @@
 package com.usermicroservice.usermicroservice.services;
 
-import com.usermicroservice.usermicroservice.config.property.SecurityApplicationProperties;
 import com.usermicroservice.usermicroservice.dto.UserDTO;
 import com.usermicroservice.usermicroservice.dto.UserLoginDTO;
 import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;
 import com.usermicroservice.usermicroservice.repositories.UserRepository;
 import com.usermicroservice.usermicroservice.services.iservices.IUserService;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.usermicroservice.usermicroservice.webservices.AuthWebService;
+import com.usermicroservice.usermicroservice.webservices.CardWebService;
+import feign.Feign;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
 
 @Service
 public class UserService extends CrudService<User> implements IUserService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-    private final SecurityApplicationProperties securityApplicationProperties;
+    private final AuthWebService authWebService;
+    private final CardWebService cardWebService;
 
-    public UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserMapper userMapper, SecurityApplicationProperties securityApplicationProperties) {
+    UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserMapper userMapper) {
         super(repository);
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
-        this.securityApplicationProperties = securityApplicationProperties;
+        this.authWebService = Feign.builder()
+                .target(AuthWebService.class, "http://localhost:5000");
+        this.cardWebService = Feign.builder()
+                .target(CardWebService.class, "http://localhost:5001");
     }
 
     @Override
-    public User createUser(User user) {
+    public User createUser(User user) throws DataIntegrityViolationException {
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        return this.insertOrUpdate(user);
+        try {
+            user = this.insertOrUpdate(user);
+            this.cardWebService.createRandomCard(user.getId());
+            return user;
+        }
+        catch (DataIntegrityViolationException e) {
+            throw e;
+        }
     }
 
-    @Override
     public String login(UserLoginDTO userLoginDTO) throws Exception {
         User user = ((UserRepository) this._repository).findByEmail(userLoginDTO.getLogin()).orElseThrow(() -> new Exception("email not found"));
 
@@ -45,20 +52,7 @@ public class UserService extends CrudService<User> implements IUserService {
             throw new Exception("Bad password");
         }
 
-        UserDTO userDTO = this.userMapper.fromUser(user);
-
-        String tokenSubject = new ObjectMapper().writeValueAsString(userDTO);
-
-        // Création du JWT token en correspondance avec l'utilisateur.
-        String token = JWT.create()
-                // Ajout des données que l'on souhaite stocker que les Token.
-                // Dans l'exemple nous décidons de stoker uniquement le username de l'utilisateur.
-                .withSubject(tokenSubject)
-                // Ajout de la date d'expiration du token.
-                .withExpiresAt(new Date(System.currentTimeMillis() + securityApplicationProperties.getExpirationTime()))
-                // Ajout de la signature du token avec le secret.
-                .sign(Algorithm.HMAC512(securityApplicationProperties.getSecret().getBytes(StandardCharsets.UTF_8)));
-        return token;
+        return this.authWebService.getJWTToken(this.userMapper.fromUser(user));
     }
 
     @Override
@@ -66,5 +60,10 @@ public class UserService extends CrudService<User> implements IUserService {
         Long money = ((UserRepository) this._repository).getMoney(userDTO.getId());
         userDTO.setMoney(money);
         return userDTO;
+    }
+
+    @Override
+    public User findUserById(Long id) throws Exception {
+        return _repository.findById(id).orElseThrow(() -> new Exception("User not found."));
     }
 }

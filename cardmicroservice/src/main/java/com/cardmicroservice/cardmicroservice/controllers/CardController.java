@@ -27,14 +27,4 @@ public class CardController {
     public List<Card> getAvailableCards() {
         return _cardService.findAllAvailable();
     }
-
-    @PutMapping(value = "/buy/{id}")
-    public void userBuyCard(@AuthenticationPrincipal final UserDTO userDTO, @PathVariable Long id) throws Exception {
-        _cardService.buyCard(userDTO, id);
-    }
-
-    @PutMapping(value = "/sell/{id}/user/{id}")
-    public Optional<Card> userSellCard(@AuthenticationPrincipal final UserDTO userDTO, @PathVariable Long id) {
-        return null;
-    }
 }

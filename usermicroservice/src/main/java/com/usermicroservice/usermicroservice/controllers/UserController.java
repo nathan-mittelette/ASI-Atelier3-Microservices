@@ -1,25 +1,42 @@
 package com.usermicroservice.usermicroservice.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.usermicroservice.usermicroservice.dto.UserDTO;
 import com.usermicroservice.usermicroservice.dto.UserLoginDTO;
+import com.usermicroservice.usermicroservice.exception.ConflictException;
+import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;
 import com.usermicroservice.usermicroservice.services.iservices.IUserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/users")
 public class UserController {
     private final IUserService _userService;
+    private UserMapper _userMapper;
 
-    public UserController(IUserService userService) {
+    public UserController(IUserService userService, UserMapper userMapper) {
         _userService = userService;
+        _userMapper = userMapper;
     }
 
-    @PostMapping(value = "/signin")
-    public void signIn(@RequestBody User user) throws JsonProcessingException {
-        this._userService.createUser(user);
+    @GetMapping(value = "/{id}")
+    public UserDTO getUserById(@PathVariable Long id) throws Exception {
+        return this._userMapper.fromUser(_userService.findUserById(id));
+    }
+
+    @PostMapping(value = "/signup")
+    public void signUp(@RequestBody User user) throws JsonProcessingException, DataIntegrityViolationException {
+        try {
+            this._userService.createUser(user);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new ConflictException("Email already assigned :" + user.getEmail());
+        }
     }
 
     @PostMapping(value = "/login")

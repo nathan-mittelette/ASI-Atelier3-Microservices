@@ -17,7 +17,7 @@ public abstract class CrudService<T> implements ICrudService<T> {
         return (List<T>) _repository.findAll();
     }
 
-    public Optional<T> findById(Long id) {
+    public Optional<T> findById(Long id) throws Exception {
         return _repository.findById(id);
     }
 

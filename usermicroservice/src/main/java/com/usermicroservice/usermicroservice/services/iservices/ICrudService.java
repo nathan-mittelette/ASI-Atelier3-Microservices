@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface ICrudService<T> {
     List<T> findAll();
 
-    Optional<T> findById(Long id);
+    Optional<T> findById(Long id) throws Exception;
 
     T insertOrUpdate(T obj);
 
