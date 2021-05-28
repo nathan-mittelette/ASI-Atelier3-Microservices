@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9de5786f-5012-4cd2-b883-87205c619d9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dcignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ASI-Atelier3-Microservices.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-asi/importLib.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-asi/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-asi/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/CrudService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/iservices/ICrudService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authmicroservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cardmicroservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib-asi/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib-asi/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/CardDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/UserDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/UserLoginDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib-asi/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/lib-asi/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marketmicroservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roommicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roommicroservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usermicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usermicroservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usermicroservice/src/main/java/com/usermicroservice/usermicroservice/services/CrudService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usermicroservice/src/main/java/com/usermicroservice/usermicroservice/services/iservices/ICrudService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +21,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1622184880" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feat/add_local_lib" />
+                    <option name="lastUsedInstant" value="1622184879" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1t9Z4qAV5v2zdJDO6M1mJmq4SaB" />
   <component name="ProjectViewState">
@@ -86,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622183077626</updated>
-      <workItem from="1622183079363" duration="1341000" />
+      <workItem from="1622183079363" duration="1676000" />
     </task>
     <servers />
   </component>

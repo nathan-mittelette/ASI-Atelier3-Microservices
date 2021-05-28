@@ -1,7 +1,8 @@
 package com.usermicroservice.usermicroservice.services;
 
-import com.usermicroservice.usermicroservice.dto.UserDTO;
-import com.usermicroservice.usermicroservice.dto.UserLoginDTO;
+import com.asi.lib.dto.UserDTO;
+import com.asi.lib.dto.UserLoginDTO;
+import com.asi.lib.services.CrudService;
 import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;
 import com.usermicroservice.usermicroservice.repositories.UserRepository;
