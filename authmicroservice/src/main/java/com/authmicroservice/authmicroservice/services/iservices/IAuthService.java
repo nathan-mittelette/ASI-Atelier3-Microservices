@@ -5,4 +5,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface IAuthService {
     String getJWTToken(UserDTO userDTO) throws JsonProcessingException;
+    Boolean verifyJWTToken(String token);
+    UserDTO getUser(String token) throws Exception;
 }
