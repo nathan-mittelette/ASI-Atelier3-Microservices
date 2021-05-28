@@ -1,9 +1,9 @@
 package com.authmicroservice.authmicroservice.services;
 
+import com.asi.lib.dto.UserDTO;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
-import com.authmicroservice.authmicroservice.dto.UserDTO;
 import com.authmicroservice.authmicroservice.services.iservices.IAuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

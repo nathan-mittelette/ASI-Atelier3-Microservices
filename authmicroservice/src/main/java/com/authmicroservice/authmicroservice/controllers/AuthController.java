@@ -1,6 +1,6 @@
 package com.authmicroservice.authmicroservice.controllers;
 
-import com.authmicroservice.authmicroservice.dto.UserDTO;
+import com.asi.lib.dto.UserDTO;
 import com.authmicroservice.authmicroservice.services.iservices.IAuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
