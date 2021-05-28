@@ -28,8 +28,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
      *
      * @param http
      * @throws Exception
-     * @see JWTAuthFilter
-     * @see JWTAuthFilter
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,7 +37,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/private/auth/verifyJWTToken", "/private/auth/getUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JWTAuthFilter(authenticationManager(), securityApplicationProperties))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 

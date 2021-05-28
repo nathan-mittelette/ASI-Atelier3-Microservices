@@ -1,6 +1,6 @@
 package com.authmicroservice.authmicroservice.services.iservices;
 
-import com.authmicroservice.authmicroservice.dto.UserDTO;
+import com.asi.lib.dto.UserDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface IAuthService {
