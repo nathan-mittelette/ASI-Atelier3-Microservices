@@ -1,5 +1,7 @@
 package com.authmicroservice.authmicroservice.services;
 
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
 import com.authmicroservice.authmicroservice.dto.UserDTO;
 import com.authmicroservice.authmicroservice.services.iservices.IAuthService;
@@ -36,5 +38,30 @@ public class AuthService implements IAuthService {
                 // Ajout de la signature du token avec le secret.
                 .sign(Algorithm.HMAC512(securityApplicationProperties.getSecret().getBytes(StandardCharsets.UTF_8)));
         return token;
+    }
+
+    public Boolean verifyJWTToken(String token) {
+        try {
+            DecodedJWT decodedJWT = getDecodedJWT(token);
+            return true;
+        } catch (JWTVerificationException exception){
+            return false;
+        }
+    }
+
+    public UserDTO getUser(String token) throws Exception {
+        DecodedJWT decodedJWT = getDecodedJWT(token);
+        UserDTO userDTO = new ObjectMapper().readValue(decodedJWT.getSubject(), UserDTO.class);
+        if (userDTO == null) {
+            throw new Exception("Bad Token");
+        }
+        return userDTO;
+    }
+
+    private DecodedJWT getDecodedJWT(String token) throws JWTVerificationException {
+        Algorithm algorithm = Algorithm.HMAC512(securityApplicationProperties.getSecret().getBytes(StandardCharsets.UTF_8));
+        return JWT.require(algorithm)
+                .build()
+                .verify(token.replace(securityApplicationProperties.getTokenPrefix(), ""));
     }
 }

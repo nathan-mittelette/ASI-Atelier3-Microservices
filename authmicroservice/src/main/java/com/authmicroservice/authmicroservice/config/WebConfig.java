@@ -36,6 +36,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers().permitAll()
                 .antMatchers(HttpMethod.POST, "/private/auth/getJWTToken").permitAll()
+                .antMatchers(HttpMethod.GET, "/private/auth/verifyJWTToken", "/private/auth/getUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthFilter(authenticationManager(), securityApplicationProperties))
