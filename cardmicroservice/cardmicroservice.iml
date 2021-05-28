@@ -140,5 +140,6 @@
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.4.2.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.mapstruct:mapstruct-processor:1.4.2.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.4.5" level="project" />
+    <orderEntry type="library" name="Maven: com.asi.lib:lib-asi:1.0-SNAPSHOT" level="project" />
   </component>
 </module>

@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+
+# Installation des dépendances
 mvn clean install -DskipTests
-mvn package -DskipTests
-mvn install:install-file -Dfile=target/lib-asi-1.0-SNAPSHOT.jar -DgroupId=com.asi.lib -DartifactId=lib-asi -Dversion=1.0-SNAPSHOT -Dpackaging=jar
+
+# Installation du répo en local
+mvn install -DskipTests
