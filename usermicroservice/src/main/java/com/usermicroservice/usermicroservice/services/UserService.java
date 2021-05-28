@@ -1,14 +1,15 @@
 package com.usermicroservice.usermicroservice.services;
 
-import com.usermicroservice.usermicroservice.dto.UserDTO;
-import com.usermicroservice.usermicroservice.dto.UserLoginDTO;
+import com.asi.lib.dto.UserDTO;
+import com.asi.lib.dto.UserLoginDTO;
+import com.asi.lib.services.CrudService;
 import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;
 import com.usermicroservice.usermicroservice.repositories.UserRepository;
 import com.usermicroservice.usermicroservice.services.iservices.IUserService;
 import com.usermicroservice.usermicroservice.webservices.AuthWebService;
 import com.usermicroservice.usermicroservice.webservices.CardWebService;
-import feign.Feign;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,17 +20,15 @@ public class UserService extends CrudService<User> implements IUserService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-    private final AuthWebService authWebService;
-    private final CardWebService cardWebService;
+    @Autowired
+    private AuthWebService authWebService;
+    @Autowired
+    private CardWebService cardWebService;
 
     UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserMapper userMapper) {
         super(repository);
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
-        this.authWebService = Feign.builder()
-                .target(AuthWebService.class, "http://localhost:5000");
-        this.cardWebService = Feign.builder()
-                .target(CardWebService.class, "http://localhost:5001");
     }
 
     @Override

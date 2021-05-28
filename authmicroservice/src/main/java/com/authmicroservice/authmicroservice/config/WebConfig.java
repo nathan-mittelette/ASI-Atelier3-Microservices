@@ -1,6 +1,6 @@
-package com.usermicroservice.usermicroservice.config;
+package com.authmicroservice.authmicroservice.config;
 
-import com.usermicroservice.usermicroservice.config.property.SecurityApplicationProperties;
+import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,18 +28,15 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
      *
      * @param http
      * @throws Exception
-     * @see JWTAuthenticationFilter
-     * @see JWTAuthorizationFilter
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers().permitAll()
-                .antMatchers(HttpMethod.POST, "/users/signup", "/users/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/web/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/private/auth/getJWTToken").permitAll()
+                .antMatchers(HttpMethod.GET, "/private/auth/verifyJWTToken", "/private/auth/getUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JWTAuthFilter(authenticationManager(), securityApplicationProperties))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 

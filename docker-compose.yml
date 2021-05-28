@@ -1,0 +1,105 @@
+version: '3.7'
+services:
+  auth-api-service:
+    build: authmicroservice/.
+    ports:
+      - "5000:5000"
+    networks:
+      - api-network
+
+  card-api-service:
+    build: cardmicroservice/.
+    command: mvnw.cmd flyway:migrate
+    depends_on:
+      - card-database-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://card-database-service:5432/card-database
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "5001:5001"
+    networks:
+      - card-network
+      - api-network
+  card-database-service:
+    image: 'postgres:13.2-alpine'
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=card-database
+    ports:
+      - "6001:5432"
+    networks:
+      - card-network
+
+  market-api-service:
+    build: marketmicroservice/.
+    command: mvnw.cmd flyway:migrate
+    ports:
+      - "5002:5002"
+    networks:
+      - api-network
+
+  room-api-service:
+    build: roommicroservice/.
+    command: mvnw.cmd flyway:migrate
+    depends_on:
+      - room-database-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://room-database-service:5432/room-database
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "5003:5003"
+    networks:
+      - room-network
+      - api-network
+  room-database-service:
+    image: 'postgres:13.2-alpine'
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=room-database
+    ports:
+      - "6003:5432"
+    networks:
+      - room-network
+
+
+  user-api-service:
+    build: usermicroservice/.
+    command: mvnw.cmd flyway:migrate
+    depends_on:
+      - user-database-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-database-service:5432/user-database
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "5004:5004"
+    networks:
+      - user-network
+      - api-network
+  user-database-service:
+    image: 'postgres:13.2-alpine'
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=user-database
+    ports:
+      - "6004:5432"
+    networks:
+      - user-network
+
+networks:
+  user-network:
+    driver: bridge
+  card-network:
+    driver: bridge
+  room-network:
+    driver: bridge
+  api-network:
+    driver: bridge

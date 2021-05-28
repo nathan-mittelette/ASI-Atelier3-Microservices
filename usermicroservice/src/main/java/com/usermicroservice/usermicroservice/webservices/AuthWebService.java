@@ -1,14 +1,12 @@
 package com.usermicroservice.usermicroservice.webservices;
 
-import com.usermicroservice.usermicroservice.dto.UserDTO;
+import com.asi.lib.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient
+@FeignClient(name="auth-micro-service", contextId = "authWebService", url="http://localhost:5000")
 public interface AuthWebService {
 
-    @GetMapping("/cards/")
-    String getJWTToken(@PathVariable UserDTO userDTO);
+    @PostMapping("/private/auth/getJWTToken")
+    String getJWTToken(UserDTO userDTO);
 }
