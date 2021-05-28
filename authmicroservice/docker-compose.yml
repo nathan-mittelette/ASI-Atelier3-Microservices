@@ -1,8 +1,0 @@
-version: '3.7'
-services:
-
-  auth-api:
-    build: ./
-    container_name: auth-api
-    ports:
-      - "5000:5000"
