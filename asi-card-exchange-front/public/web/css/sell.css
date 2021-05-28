@@ -1,0 +1,12 @@
+.sell-content {
+    margin: 20px !important;
+}
+
+tr {
+    cursor: pointer;
+}
+
+#cardImgId {
+    width: auto !important;
+    height: auto !important;
+}
