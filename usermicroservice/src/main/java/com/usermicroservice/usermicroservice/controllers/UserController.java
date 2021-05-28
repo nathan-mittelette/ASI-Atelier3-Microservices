@@ -1,8 +1,8 @@
 package com.usermicroservice.usermicroservice.controllers;
 
+import com.asi.lib.dto.UserDTO;
+import com.asi.lib.dto.UserLoginDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.usermicroservice.usermicroservice.dto.UserDTO;
-import com.usermicroservice.usermicroservice.dto.UserLoginDTO;
 import com.usermicroservice.usermicroservice.exception.ConflictException;
 import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;

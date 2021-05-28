@@ -61,6 +61,13 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.asi.lib</groupId>
+            <artifactId>lib-asi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

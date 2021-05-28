@@ -1,6 +1,6 @@
 package com.usermicroservice.usermicroservice.mapper;
 
-import com.usermicroservice.usermicroservice.dto.UserDTO;
+import com.asi.lib.dto.UserDTO;
 import com.usermicroservice.usermicroservice.models.User;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
