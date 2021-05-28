@@ -1,5 +1,5 @@
-C:\Users\eloib\Documents\atelier3\lib-asi\src\main\java\com\asi\lib\services\CrudService.java
-C:\Users\eloib\Documents\atelier3\lib-asi\src\main\java\com\asi\lib\services\iservices\ICrudService.java
-C:\Users\eloib\Documents\atelier3\lib-asi\src\main\java\com\asi\lib\dto\CardDTO.java
-C:\Users\eloib\Documents\atelier3\lib-asi\src\main\java\com\asi\lib\dto\UserLoginDTO.java
-C:\Users\eloib\Documents\atelier3\lib-asi\src\main\java\com\asi\lib\dto\UserDTO.java
+/Users/nathanmittelette/Documents/Programmation/ASI/Step3/ASI-Atelier3-Microservices/lib-asi/src/main/java/com/asi/lib/dto/UserLoginDTO.java
+/Users/nathanmittelette/Documents/Programmation/ASI/Step3/ASI-Atelier3-Microservices/lib-asi/src/main/java/com/asi/lib/dto/CardDTO.java
+/Users/nathanmittelette/Documents/Programmation/ASI/Step3/ASI-Atelier3-Microservices/lib-asi/src/main/java/com/asi/lib/dto/UserDTO.java
+/Users/nathanmittelette/Documents/Programmation/ASI/Step3/ASI-Atelier3-Microservices/lib-asi/src/main/java/com/asi/lib/services/CrudService.java
+/Users/nathanmittelette/Documents/Programmation/ASI/Step3/ASI-Atelier3-Microservices/lib-asi/src/main/java/com/asi/lib/services/iservices/ICrudService.java
