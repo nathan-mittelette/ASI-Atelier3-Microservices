@@ -4,62 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7861f0a2-a882-428a-bed4-afa1f2909a0f" name="Default Changelist" comment="" />
+    <list default="true" id="9de5786f-5012-4cd2-b883-87205c619d9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.dcignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ASI-Atelier3-Microservices.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-asi/importLib.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-asi/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-asi/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/CrudService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/iservices/ICrudService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authmicroservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cardmicroservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib-asi/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib-asi/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/CardDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib-asi/target/classes/com/asi/lib/dto/UserLoginDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib-asi/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/lib-asi/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/marketmicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marketmicroservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roommicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roommicroservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usermicroservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usermicroservice/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
   </component>
-  <component name="ProjectId" id="1sNY07GW0be4GPTj66kh0jeywUh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1t9Z4qAV5v2zdJDO6M1mJmq4SaB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="postgresql" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cardmicroservice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/iservices" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="build.tools" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\eloib\Downloads\atelier2" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services/iservices" />
+      <recent name="$PROJECT_DIR$/lib-asi/src/main/java/com/asi/lib/services" />
+      <recent name="$PROJECT_DIR$/lib-asi" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Atelier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="cardmicroservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atelier2.atelier2.Atelier2Application" />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -68,19 +81,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7861f0a2-a882-428a-bed4-afa1f2909a0f" name="Default Changelist" comment="" />
-      <created>1620714288275</created>
+      <changelist id="9de5786f-5012-4cd2-b883-87205c619d9d" name="Default Changelist" comment="" />
+      <created>1622183077626</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1620714288275</updated>
-      <workItem from="1620714289600" duration="18611000" />
-      <workItem from="1620800952745" duration="739000" />
-      <workItem from="1621922478077" duration="3180000" />
-      <workItem from="1621931370749" duration="4222000" />
-      <workItem from="1621941311820" duration="2758000" />
-      <workItem from="1622009073492" duration="235000" />
-      <workItem from="1622009998689" duration="1145000" />
-      <workItem from="1622017473171" duration="329000" />
+      <updated>1622183077626</updated>
+      <workItem from="1622183079363" duration="1341000" />
     </task>
     <servers />
   </component>
@@ -97,22 +103,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/atelier2/atelier2/controllers/CardController.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/atelier2/atelier2/controllers/UserController.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
