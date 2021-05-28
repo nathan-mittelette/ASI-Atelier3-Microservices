@@ -1,5 +1,6 @@
 package com.roommicroservice.roommicroservice.services;
 
+import com.asi.lib.services.CrudService;
 import com.roommicroservice.roommicroservice.models.Room;
 import com.roommicroservice.roommicroservice.repositories.RoomRepository;
 import com.roommicroservice.roommicroservice.services.iservices.IRoomService;

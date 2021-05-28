@@ -1,5 +1,6 @@
 package com.roommicroservice.roommicroservice.services;
 
+import com.asi.lib.services.CrudService;
 import com.roommicroservice.roommicroservice.models.Player;
 import com.roommicroservice.roommicroservice.repositories.PlayerRepository;
 import com.roommicroservice.roommicroservice.services.iservices.IPlayerService;
