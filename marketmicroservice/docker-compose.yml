@@ -1,8 +1,0 @@
-version: '3.7'
-services:
-
-  market-api:
-    build: ./
-    container_name: market-api
-    ports:
-      - "5003:5003"

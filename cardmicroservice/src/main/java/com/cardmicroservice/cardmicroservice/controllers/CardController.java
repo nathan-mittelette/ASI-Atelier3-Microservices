@@ -1,6 +1,5 @@
 package com.cardmicroservice.cardmicroservice.controllers;
 
-import com.cardmicroservice.cardmicroservice.dto.UserDTO;
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

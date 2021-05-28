@@ -1,6 +1,7 @@
 package com.cardmicroservice.cardmicroservice.services.iservices;
 
-import com.cardmicroservice.cardmicroservice.dto.UserDTO;
+import com.asi.lib.dto.UserDTO;
+import com.asi.lib.services.iservices.ICrudService;
 import com.cardmicroservice.cardmicroservice.models.Card;
 
 import java.util.List;

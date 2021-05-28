@@ -1,7 +1,7 @@
 package com.cardmicroservice.cardmicroservice.services;
 
-import com.cardmicroservice.cardmicroservice.dto.UserDTO;
-import com.cardmicroservice.cardmicroservice.mapper.UserMapper;
+import com.asi.lib.dto.UserDTO;
+import com.asi.lib.services.CrudService;
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.models.User;
 import com.cardmicroservice.cardmicroservice.repositories.CardRepository;
@@ -14,12 +14,10 @@ import java.util.List;
 public class CardService extends CrudService<Card> implements ICardService {
 
     private CardRepository _cardRepository;
-    private final UserMapper userMapper;
 
-    public CardService(CardRepository repository, UserMapper userMapper) {
+    public CardService(CardRepository repository) {
         super(repository);
         _cardRepository = repository;
-        this.userMapper = userMapper;
     }
 
     @Override
@@ -30,16 +28,17 @@ public class CardService extends CrudService<Card> implements ICardService {
     @Override
     public void buyCard(UserDTO buyerDTO, Long cardId) throws Exception {
         Card card = _cardRepository.findById(cardId).get();
-        User buyer = this.userMapper.toUser(buyerDTO);
-        User seller = card.getUser();
+        //User buyer = this.userMapper.toUser(buyerDTO);
+        // TODO faire les appels via le webService
+        //User seller = card.getUser();
 
-        this.sellOperation(buyer, seller, card);
+        //this.sellOperation(buyer, seller, card);
     }
 
     @Override
     public void sellCard(UserDTO sellerDTO, Long cardId, Long buyerId) throws Exception {
         Card card = _cardRepository.findById(cardId).get();
-        User seller = this.userMapper.toUser(sellerDTO);
+        //User seller = this.userMapper.toUser(sellerDTO);
         //User buyer = this.userService.findById(buyerId).get();
 
         //this.sellOperation(buyer, seller, card);
@@ -54,7 +53,8 @@ public class CardService extends CrudService<Card> implements ICardService {
             throw new Exception("Not enough money.");
         }
 
-        card.setUser(buyer);
+        // TODO adapter avec les microservices
+        //card.setUser(buyer);
         buyer.setMoney(buyer.getMoney() - card.getPrice());
 
         // we can buy available cards = no seller
