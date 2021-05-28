@@ -1,5 +1,8 @@
 package com.authmicroservice.authmicroservice.services.iservices;
 
-public interface IAuthService {
+import com.authmicroservice.authmicroservice.dto.UserDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
+public interface IAuthService {
+    String getJWTToken(UserDTO userDTO) throws JsonProcessingException;
 }

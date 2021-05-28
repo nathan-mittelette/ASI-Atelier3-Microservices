@@ -1,12 +1,12 @@
-package com.authmicroservice.authmicroservice.config;
+package com.usermicroservice.usermicroservice.config;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.authmicroservice.authmicroservice.dto.UserDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
+import com.usermicroservice.usermicroservice.config.property.SecurityApplicationProperties;
+import com.usermicroservice.usermicroservice.dto.UserDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
