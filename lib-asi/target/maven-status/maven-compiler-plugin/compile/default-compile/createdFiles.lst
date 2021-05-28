@@ -1,3 +1,5 @@
 com/asi/lib/dto/UserLoginDTO.class
 com/asi/lib/dto/UserDTO.class
 com/asi/lib/dto/CardDTO.class
+com/asi/lib/services/CrudService.class
+com/asi/lib/services/iservices/ICrudService.class
