@@ -18,16 +18,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService extends CrudService<User> implements IUserService {
 
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     @Autowired
     private AuthWebService authWebService;
     @Autowired
     private CardWebService cardWebService;
 
-    UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserMapper userMapper) {
+    UserService(UserRepository repository, UserMapper userMapper) {
         super(repository);
-        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = new BCryptPasswordEncoder();
         this.userMapper = userMapper;
     }
 

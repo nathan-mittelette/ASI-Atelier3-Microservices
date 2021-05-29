@@ -1,4 +1,4 @@
-package com.usermicroservice.usermicroservice.webservices;
+package com.roommicroservice.roommicroservice.webservices;
 
 import com.asi.lib.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -12,8 +12,8 @@ public interface AuthWebService {
     String getJWTToken(UserDTO userDTO);
 
     @GetMapping("/private/auth/verifyJWTToken")
-    Boolean verifyJWTToken(String token);
+    void verifyJWTToken(String token);
 
-    @GetMapping("/private/auth/getUser")
+    @PostMapping("/private/auth/getUser")
     UserDTO getUser(String token);
 }

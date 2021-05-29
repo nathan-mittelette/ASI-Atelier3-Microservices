@@ -21,13 +21,26 @@ public class Room implements Serializable {
     private Player player2;
 
     @Column(name = "state")
-    private Long state;
+    @Enumerated(EnumType.STRING)
+    private ERoomState state;
 
-    public Room(Long id, Player player1, Player player2, Long state) {
+    @Column(name = "bet")
+    private Long bet;
+
+    public Room(Long id, Player player1, Player player2, ERoomState state, Long bet) {
         this.id = id;
         this.player1 = player1;
         this.player2 = player2;
         this.state = state;
+        this.bet = bet;
+    }
+
+    public Long getBet() {
+        return bet;
+    }
+
+    public void setBet(Long bet) {
+        this.bet = bet;
     }
 
     public Room() {
@@ -58,11 +71,11 @@ public class Room implements Serializable {
         this.player2 = player2;
     }
 
-    public Long getState() {
+    public ERoomState getState() {
         return state;
     }
 
-    public void setState(Long state) {
+    public void setState(ERoomState state) {
         this.state = state;
     }
 }
