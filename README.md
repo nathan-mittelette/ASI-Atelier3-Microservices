@@ -1,3 +1,30 @@
+# ASI Step 3
+
+## Compiliation du projet
+
+Chaque microservice ou library du projet est un module du `pom.xml` présent à la racine du projet.
+Lorsque vous souhaitez lancer le projet, vous devez effectuer la commande suivante à la racine du projet : 
+
+```bash
+mvn clean install -DskipTests
+```
+
+Cela va compiler tous les microservices et les library du projet.
+
+## Lors du développement
+
+Lorsque vous développez sur un microservice en particulier vous allez avoir besoin de build uniquement le projet sur lequel vous travaillez. Dans les cas ou vous allez changez la library il sera nécessaire de relancer une insatllation maven de la lib et ensuite du microservice pour que les changements soient présents.
+
+Pour lancer un projet spécifique : 
+
+Une fois le clean install effectuer vous vous rendez dans le projet que vous souhaitez lancer et effectuez la commande suivante : 
+
+```bash
+mvn spring-boot:run
+```
+
+PS je vais vous montrer comment lancer tous les projets depuis IntelliJ une fois à CPE.
+
 ## Création du package maven
 
 ### Création du projet Maven
