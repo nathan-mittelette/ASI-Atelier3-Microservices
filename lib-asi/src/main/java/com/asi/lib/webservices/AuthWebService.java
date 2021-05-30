@@ -1,11 +1,11 @@
-package com.usermicroservice.usermicroservice.webservices;
+package com.asi.lib.webservices;
 
 import com.asi.lib.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name="auth-micro-service", contextId = "authWebService", url="http://localhost:5000")
+@FeignClient(name = "auth-micro-service", contextId = "authWebService", url = "http://localhost:5000")
 public interface AuthWebService {
 
     @PostMapping("/private/auth/getJWTToken")

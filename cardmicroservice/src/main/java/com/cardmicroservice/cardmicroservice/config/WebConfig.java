@@ -1,4 +1,4 @@
-package com.roommicroservice.roommicroservice.config;
+package com.cardmicroservice.cardmicroservice.config;
 
 import com.asi.lib.config.AbstractWebConfig;
 import com.asi.lib.webservices.AuthWebService;

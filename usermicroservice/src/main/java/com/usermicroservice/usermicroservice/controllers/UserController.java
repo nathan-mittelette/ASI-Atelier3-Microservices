@@ -12,7 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
-@RequestMapping("/users")
+@RequestMapping("/public/users")
 public class UserController {
     private final IUserService _userService;
     private UserMapper _userMapper;

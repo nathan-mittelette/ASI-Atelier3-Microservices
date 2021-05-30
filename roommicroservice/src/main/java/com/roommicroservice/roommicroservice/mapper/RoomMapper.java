@@ -1,17 +1,16 @@
 package com.roommicroservice.roommicroservice.mapper;
 
-import com.roommicroservice.roommicroservice.dto.PlayerDTO;
-import com.roommicroservice.roommicroservice.dto.RoomDTO;
-import com.roommicroservice.roommicroservice.models.Player;
+import com.asi.lib.dto.RoomDTO;
 import com.roommicroservice.roommicroservice.models.Room;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {PlayerMapper.class})
 @Component
 public interface RoomMapper {
 
-    RoomDTO toDTO(Room room);
-    Room toBo(PlayerDTO playerDTO);
+    RoomDTO toDTO(Room source);
+
+    Room toBo(RoomDTO source);
 }

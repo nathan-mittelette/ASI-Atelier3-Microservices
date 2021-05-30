@@ -3,7 +3,6 @@ package com.cardmicroservice.cardmicroservice.services;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.services.CrudService;
 import com.cardmicroservice.cardmicroservice.models.Card;
-import com.cardmicroservice.cardmicroservice.models.User;
 import com.cardmicroservice.cardmicroservice.repositories.CardRepository;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
 import org.springframework.stereotype.Service;
@@ -44,7 +43,7 @@ public class CardService extends CrudService<Card> implements ICardService {
         //this.sellOperation(buyer, seller, card);
     }
 
-    private void sellOperation(User buyer, User seller, Card card) throws Exception {
+    private void sellOperation(UserDTO seller, UserDTO buyer, Card card) throws Exception {
         if (card == null || seller == null || buyer == null){
             throw new Exception("Wrong operation.");
         }

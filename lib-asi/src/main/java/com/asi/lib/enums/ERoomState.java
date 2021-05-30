@@ -1,4 +1,4 @@
-package com.roommicroservice.roommicroservice.models;
+package com.asi.lib.enums;
 
 public enum ERoomState {
     CREATED("CREATED"),

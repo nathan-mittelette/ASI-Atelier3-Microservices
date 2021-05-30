@@ -1,10 +1,10 @@
 package com.roommicroservice.roommicroservice.services;
 
+import com.asi.lib.dto.RoomDTO;
 import com.asi.lib.dto.UserDTO;
+import com.asi.lib.enums.ERoomState;
 import com.asi.lib.services.CrudService;
-import com.roommicroservice.roommicroservice.dto.RoomDTO;
 import com.roommicroservice.roommicroservice.mapper.RoomMapper;
-import com.roommicroservice.roommicroservice.models.ERoomState;
 import com.roommicroservice.roommicroservice.models.Player;
 import com.roommicroservice.roommicroservice.models.Room;
 import com.roommicroservice.roommicroservice.repositories.PlayerRepository;

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController()
-@RequestMapping("/cards")
+@RequestMapping("/secured/cards")
 public class CardController {
     private final ICardService _cardService;
 

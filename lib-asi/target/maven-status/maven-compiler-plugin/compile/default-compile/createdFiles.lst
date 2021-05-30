@@ -1,5 +1,12 @@
-com\asi\lib\services\iservices\ICrudService.class
-com\asi\lib\dto\UserLoginDTO.class
-com\asi\lib\dto\CardDTO.class
-com\asi\lib\dto\UserDTO.class
-com\asi\lib\services\CrudService.class
+com/asi/lib/dto/RoomDTO.class
+com/asi/lib/dto/UserLoginDTO.class
+com/asi/lib/dto/UserDTO.class
+com/asi/lib/config/AbstractAuthFilter.class
+com/asi/lib/dto/PlayerDTO.class
+com/asi/lib/config/AbstractWebConfig.class
+com/asi/lib/dto/CardDTO.class
+com/asi/lib/services/CrudService.class
+com/asi/lib/services/iservices/ICrudService.class
+com/asi/lib/webservices/AuthWebService.class
+com/asi/lib/webservices/CardWebService.class
+com/asi/lib/enums/ERoomState.class
