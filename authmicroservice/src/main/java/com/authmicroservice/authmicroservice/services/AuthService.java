@@ -1,16 +1,15 @@
 package com.authmicroservice.authmicroservice.services;
 
 import com.asi.lib.dto.UserDTO;
-import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
 import com.authmicroservice.authmicroservice.services.iservices.IAuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -44,7 +43,7 @@ public class AuthService implements IAuthService {
         try {
             DecodedJWT decodedJWT = getDecodedJWT(token);
             return true;
-        } catch (JWTVerificationException exception){
+        } catch (JWTVerificationException exception) {
             return false;
         }
     }

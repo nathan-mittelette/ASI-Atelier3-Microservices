@@ -13,10 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 
-// TODO ajouter la logique d'authentification qui va correspondre à tous les micro services
 public class AbstractAuthFilter extends BasicAuthenticationFilter {
 
     private final AuthWebService authWebService;
@@ -41,13 +39,15 @@ public class AbstractAuthFilter extends BasicAuthenticationFilter {
                                     FilterChain chain) throws IOException, ServletException {
 
         // Récupération du header qui contient le token JWT.
-        String token = req.getHeader("Authorization").replaceAll("Bearer", "");
+        String token = req.getHeader("Authorization");
 
         // Si jamais il n'y a pas de token JWT on passe à la suite.
-        if (token.trim().isEmpty()) {
+        if (token == null || token.trim().isEmpty()) {
             chain.doFilter(req, res);
             return;
         }
+
+        token = token.replaceAll("Bearer ", "");
 
         // Récupération de l'utilisateur et stockage dans le SecurityContext.
         UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
@@ -59,7 +59,7 @@ public class AbstractAuthFilter extends BasicAuthenticationFilter {
     /**
      * Retourne une classe UsernamePasswordAuthenticationToken en fonction de la requête
      *
-     * @param request
+     * @param token
      * @return
      */
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {

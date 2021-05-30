@@ -4,7 +4,7 @@ import com.marketmicroservice.marketmicroservice.services.iservices.IMarketServi
 import org.springframework.stereotype.Service;
 
 @Service
-public class MarketService  implements IMarketService {
+public class MarketService implements IMarketService {
 
 
 }

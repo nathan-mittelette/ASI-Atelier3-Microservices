@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.asi</groupId>
         <artifactId>asi-core</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.usermicroservice</groupId>
@@ -82,12 +82,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>3.0.2</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.asi.lib</groupId>
             <artifactId>lib-asi</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -106,7 +100,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>7.8.2</version>
                 <configuration>
-                    <url>jdbc:postgresql://localhost:5432/cards</url>
+                    <url>jdbc:postgresql://localhost:6004/cards</url>
                     <user>postgres</user>
                     <password>root</password>
                     <schemas>public</schemas>

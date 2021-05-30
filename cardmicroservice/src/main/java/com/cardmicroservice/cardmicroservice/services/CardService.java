@@ -44,11 +44,11 @@ public class CardService extends CrudService<Card> implements ICardService {
     }
 
     private void sellOperation(UserDTO seller, UserDTO buyer, Card card) throws Exception {
-        if (card == null || seller == null || buyer == null){
+        if (card == null || seller == null || buyer == null) {
             throw new Exception("Wrong operation.");
         }
 
-        if (buyer.getMoney() < card.getPrice()){
+        if (buyer.getMoney() < card.getPrice()) {
             throw new Exception("Not enough money.");
         }
 
@@ -58,7 +58,7 @@ public class CardService extends CrudService<Card> implements ICardService {
 
         // we can buy available cards = no seller
         if (seller != null) {
-            seller.setMoney(seller.getMoney()+card.getPrice());
+            seller.setMoney(seller.getMoney() + card.getPrice());
         }
 
         this.insertOrUpdate(card);

@@ -36,8 +36,7 @@ public class UserService extends CrudService<User> implements IUserService {
             user = this.insertOrUpdate(user);
             this.cardWebService.createRandomCard(userMapper.fromUser(user));
             return user;
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw e;
         }
     }

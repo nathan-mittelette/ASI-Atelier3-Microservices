@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CardRepository extends CrudRepository<Card, Long>  {
+public interface CardRepository extends CrudRepository<Card, Long> {
 
     @Query(value = "SELECT * FROM public.card WHERE userId IS NULL", nativeQuery = true)
     List<Card> findAllAvailable();

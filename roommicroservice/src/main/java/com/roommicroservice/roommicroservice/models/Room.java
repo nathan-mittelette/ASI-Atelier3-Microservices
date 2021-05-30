@@ -1,10 +1,10 @@
 package com.roommicroservice.roommicroservice.models;
 
+import com.asi.lib.enums.ERoomState;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import com.asi.lib.enums.ERoomState;
 
 @Entity
 @Table(name = "room", schema = "public")

@@ -23,7 +23,7 @@ public class AuthController {
 
     @GetMapping(value = "/verifyJWTToken")
     public ResponseEntity<Boolean> getJWTToken(String token) {
-        return _authService.verifyJWTToken(token) ? new ResponseEntity<Boolean>(true, HttpStatus.OK) : new ResponseEntity<Boolean>(false,HttpStatus.INTERNAL_SERVER_ERROR);
+        return _authService.verifyJWTToken(token) ? new ResponseEntity<Boolean>(true, HttpStatus.OK) : new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(value = "/getUser")

@@ -31,8 +31,7 @@ public class UserController {
     public void signUp(@RequestBody User user) throws JsonProcessingException, DataIntegrityViolationException {
         try {
             this._userService.createUser(user);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw new ConflictException("Email already assigned :" + user.getEmail());
         }
     }
