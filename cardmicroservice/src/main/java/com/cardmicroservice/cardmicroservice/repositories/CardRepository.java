@@ -12,4 +12,7 @@ public interface CardRepository extends CrudRepository<Card, Long>  {
 
     @Query(value = "SELECT * FROM public.card WHERE available is TRUE", nativeQuery = true)
     List<Card> findAllAvailable();
+
+    @Query(value = "SELECT * FROM public.card WHERE userid = ?1", nativeQuery = true)
+    List<Card> getByUserId(Long userId);
 }

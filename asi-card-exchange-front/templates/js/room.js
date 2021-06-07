@@ -30,7 +30,7 @@ $(document).ready(function () {
   if (localStorage.getItem('auth') != null) {
     // Get current user
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5003/secure/rooms/available';
+    const url = 'http://localhost:5003/secured/rooms';
 
     Http.open("GET", url);
 
@@ -87,7 +87,7 @@ function addRoom() {
   if (localStorage.getItem('auth') != null) {
     // Get current user
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5003/secure/rooms/add/'; //TODO: Change port for reverse proxy
+    const url = 'http://localhost:5003/secure/rooms'; //TODO: Change port for reverse proxy
 
     const bet = document.getElementById('form_room_bet').value;
     const description = document.getElementById('form_room_description').value;
@@ -107,8 +107,9 @@ function addRoom() {
     }
 
     Http.send(JSON.stringify({
+      "cardId": 0,
       "bet": bet,
-      "description": description,
+      "name": description,
     }));
   }
 }
@@ -119,7 +120,7 @@ function joinRoom(roomId) {
   if (localStorage.getItem('auth') != null) {
     // Get current user
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5003/secure/rooms/join/' + roomId; //TODO: Change port for reverse proxy
+    const url = 'http://localhost:5003/secure/rooms';
 
     Http.open("PUT", url);
 
@@ -134,6 +135,9 @@ function joinRoom(roomId) {
       }
     }
 
-    Http.send();
+    Http.send(JSON.stringify({
+      "cardId": 0,
+      "roomId": roomId
+    }));
   }
 }

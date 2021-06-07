@@ -42,13 +42,13 @@ public class UserService extends CrudService<User> implements IUserService {
         }
     }
 
-    public String login(UserLoginDTO userLoginDTO) throws Exception {
-        User user = ((UserRepository) this._repository).findByEmail(userLoginDTO.getLogin()).orElseThrow(() -> new Exception("email not found"));
+    public String login(UserLoginDTO userLoginDTO) {
+        User user = ((UserRepository) this._repository).findByEmail(userLoginDTO.getLogin()).orElseThrow(() -> new RuntimeException("Email not found"));
 
-        /*if (!this.passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
-            throw new Exception("Bad password");
+        if (!this.passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Bad password");
         }
-*/
+
         return this.authWebService.getJWTToken(this.userMapper.fromUser(user));
     }
 
