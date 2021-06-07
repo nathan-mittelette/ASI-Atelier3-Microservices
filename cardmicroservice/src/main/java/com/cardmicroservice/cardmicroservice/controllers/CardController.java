@@ -1,13 +1,10 @@
 package com.cardmicroservice.cardmicroservice.controllers;
 
 import com.asi.lib.dto.CardDTO;
-import com.asi.lib.dto.UserDTO;
-import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CardController {
@@ -18,17 +15,22 @@ public class CardController {
     }
 
     @GetMapping(value = "/private/cards/{id}")
-    public CardDTO getCardById(@PathVariable Long id) throws Exception {
+    public CardDTO getById(@PathVariable Long id) {
         return _cardService.getById(id);
     }
 
     @GetMapping(value = "/secured/cards/available")
-    public List<CardDTO> getAvailableCards() {
+    public List<CardDTO> getAvailable() {
         return _cardService.findAllAvailable();
     }
 
     @PostMapping(value = "/private/cards/createRandom")
-    public CardDTO createRandomCard(@RequestBody Long userId) {
+    public CardDTO createRandom(@RequestBody Long userId) {
         return _cardService.createRandomCard(userId);
+    }
+
+    @PutMapping(value = "/private/cards/update")
+    public CardDTO update(@RequestBody CardDTO cardDTO) {
+        return _cardService.update(cardDTO);
     }
 }

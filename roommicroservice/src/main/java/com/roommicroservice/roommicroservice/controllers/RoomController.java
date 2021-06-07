@@ -21,7 +21,7 @@ public class RoomController {
     }
 
     @PostMapping()
-    public RoomDTO createRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody CreateRoomDto createRoomDto) throws Exception {
+    public RoomDTO createRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody CreateRoomDto createRoomDto) {
         return _roomService.createRoom(userDTO, createRoomDto);
     }
 

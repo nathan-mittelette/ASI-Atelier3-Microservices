@@ -10,6 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class CardDTO implements Serializable {
 
     private Long id;
@@ -23,6 +24,6 @@ public class CardDTO implements Serializable {
     private Long attack;
     private Long defense;
     private Long price;
-    private UserDTO user;
-
+    private Boolean available;
+    private Long userId;
 }

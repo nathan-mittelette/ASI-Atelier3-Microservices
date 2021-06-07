@@ -12,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Card implements Serializable {
 
     @Id
@@ -49,6 +50,9 @@ public class Card implements Serializable {
     @Column(name = "price")
     private Long price;
 
+    @Column(name = "available")
+    private Boolean available;
+
     @Column(name = "userid")
-    private Long userid;
+    private Long userId;
 }

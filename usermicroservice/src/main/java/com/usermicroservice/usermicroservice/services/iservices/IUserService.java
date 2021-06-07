@@ -13,4 +13,6 @@ public interface IUserService extends ICrudService<User> {
     User findUserById(Long id) throws Exception;
 
     String login(UserLoginDTO userLoginDTO) throws Exception;
+
+    UserDTO update(UserDTO userDto);
 }

@@ -1,5 +1,6 @@
 package com.usermicroservice.usermicroservice.services;
 
+import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.dto.UserLoginDTO;
 import com.asi.lib.services.CrudService;
@@ -61,5 +62,11 @@ public class UserService extends CrudService<User> implements IUserService {
     @Override
     public User findUserById(Long id) throws Exception {
         return _repository.findById(id).orElseThrow(() -> new Exception("User not found."));
+    }
+
+    public UserDTO update(UserDTO userDto) {
+        User user = userMapper.toUser(userDto);
+        this.insertOrUpdate(user);
+        return userMapper.fromUser(user);
     }
 }

@@ -5,3 +5,9 @@ WORKDIR $HOME
 COPY target/*.jar $HOME/demo.jar
 
 ENTRYPOINT java -jar demo.jar
+
+
+
+
+MAINTAINER ilies
+EXPOSE 5000

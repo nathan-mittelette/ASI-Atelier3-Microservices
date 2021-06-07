@@ -32,8 +32,6 @@ suivante :
 mvn spring-boot:run
 ```
 
-PS je vais vous montrer comment lancer tous les projets depuis IntelliJ une fois à CPE.
-
 ## Création du package maven
 
 ### Création du projet Maven
