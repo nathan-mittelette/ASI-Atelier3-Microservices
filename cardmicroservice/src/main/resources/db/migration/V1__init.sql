@@ -16,9 +16,9 @@ CREATE TABLE public.card
     attack      bigint,
     defense     bigint,
     price       bigint,
-    userId      bigint,
+    userId      bigint NOT NULL,
     available   bool DEFAULT TRUE,
     CONSTRAINT pk_card PRIMARY KEY (id)
 );
 
-CREATE INDEX ON "card" ("id");
+CREATE INDEX index_card_userId ON card(userId);

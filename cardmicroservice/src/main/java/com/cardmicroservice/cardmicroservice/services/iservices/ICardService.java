@@ -2,6 +2,7 @@ package com.cardmicroservice.cardmicroservice.services.iservices;
 
 import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
+import com.asi.lib.exceptions.AsiException;
 import com.asi.lib.services.iservices.ICrudService;
 import com.cardmicroservice.cardmicroservice.models.Card;
 

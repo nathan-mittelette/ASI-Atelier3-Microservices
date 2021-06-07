@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient(name = "card-micro-service", contextId = "cardWebService", url = "http://localhost:5001")
+@FeignClient(name = "card-micro-service", contextId = "cardWebService", url = "http://${service.name.card:localhost}:5001")
 public interface CardWebService {
 
     @PutMapping("/private/cards/update")
