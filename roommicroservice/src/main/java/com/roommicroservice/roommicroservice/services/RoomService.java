@@ -50,7 +50,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
     }
 
     public RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto) {
-        Room room = _repository.findById(joinRoomDto.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found."));
+        Room room = _repository.findById(joinRoomDto.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found"));
 
         Player player = VerifyAndExtractPlayer(userDTO.getId(), joinRoomDto.getCardId());
 
@@ -67,11 +67,11 @@ public class RoomService extends CrudService<Room> implements IRoomService {
         return rooms.stream().map(r -> _roomMapper.toDTO(r)).collect(Collectors.toList());
     }
 
-    private Player VerifyAndExtractPlayer(long userId, long cardId) {
+    private Player VerifyAndExtractPlayer(Long userId, Long cardId) {
         CardDTO card = _cardWebService.getById(cardId);
 
-        if (card.getUserId() != userId) {
-            throw new RuntimeException("Invalid data");
+        if (card.getUserId() == null || !card.getUserId().equals(userId)) {
+            throw new RuntimeException("Invalid owner");
         }
 
         Player player = new Player();

@@ -20,6 +20,11 @@ public class MarketService implements IMarketService {
 
     public void buyCard(UserDTO userDTO, Long cardId) {
         CardDTO card = _cardWebService.getById(cardId);
+
+        if (card.getUserId() == null) {
+            throw new RuntimeException("Card has no owner");
+        }
+
         UserDTO currentUser = _userWebService.getById(card.getUserId());
         UserDTO newUser = _userWebService.getById(userDTO.getId());
 
