@@ -2,7 +2,7 @@ $(document).ready(function () {
     if (localStorage.getItem('auth') != null) {
         // Récupération de l'utilisateur courrant.
         const Http = new XMLHttpRequest();
-        const url = 'http://localhost:5000/users/current';
+        const url = 'http://localhost:5004/public/users/current';
 
         Http.open("GET", url);
 

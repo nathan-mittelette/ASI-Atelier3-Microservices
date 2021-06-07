@@ -11,6 +11,8 @@ import java.util.List;
 public interface ICardService extends ICrudService<Card> {
     List<CardDTO> findAllAvailable();
 
+    List<CardDTO> getCurrentUserCards(UserDTO userDTO);
+
     CardDTO getById(Long id);
 
     CardDTO createRandomCard(Long userId);

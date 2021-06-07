@@ -3,6 +3,7 @@ package com.asi.lib.webservices;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.dto.CardDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,4 @@ public interface CardWebService {
 
     @GetMapping("/private/cards/{id}")
     CardDTO getById(@PathVariable Long id);
-
-    @GetMapping("/secured/cards/available")
-    List<CardDTO> getAllAvailable(Long id);
 }
