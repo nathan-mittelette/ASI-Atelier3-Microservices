@@ -1,6 +1,7 @@
 package com.cardmicroservice.cardmicroservice.services;
 
 import com.asi.lib.dto.CardDTO;
+import com.asi.lib.dto.UserDTO;
 import com.asi.lib.exceptions.AsiException;
 import com.asi.lib.services.CrudService;
 import com.asi.lib.webservices.UserWebService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Service
 public class CardService extends CrudService<Card> implements ICardService {
@@ -30,7 +32,7 @@ public class CardService extends CrudService<Card> implements ICardService {
 
     public CardDTO getById(Long id) {
         Card card = _repository.findById(id).orElseThrow(() -> new AsiException(String.format("La card d'id %d n'existe pas en base de données.", id)));
-        return cardMapper.toDTO(card);
+        return _cardMapper.toDTO(card);
     }
 
     public List<CardDTO> getByUserId(Long userId) {
@@ -58,17 +60,17 @@ public class CardService extends CrudService<Card> implements ICardService {
 
         card = this.insertOrUpdate(card);
 
-        return this.cardMapper.toDTO(card);
+        return this._cardMapper.toDTO(card);
     }
 
     @Override
     public List<CardDTO> findAllAvailable() {
-        return this.cardMapper.toDTOList(_cardRepository.findAllAvailable());
+        return this._cardMapper.toDTOList(_cardRepository.findAllAvailable());
     }
 
     public CardDTO update(CardDTO cardDTO) {
-        Card card = cardMapper.toBo(cardDTO);
+        Card card = _cardMapper.toBo(cardDTO);
         card = this.insertOrUpdate(card);
-        return cardMapper.toDTO(card);
+        return _cardMapper.toDTO(card);
     }
 }

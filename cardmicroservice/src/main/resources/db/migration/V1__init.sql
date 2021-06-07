@@ -17,7 +17,7 @@ CREATE TABLE public.card
     defense     bigint,
     price       bigint,
     userId      bigint NOT NULL,
-    available   bool DEFAULT TRUE,
+    available   bool DEFAULT FALSE,
     CONSTRAINT pk_card PRIMARY KEY (id)
 );
 
