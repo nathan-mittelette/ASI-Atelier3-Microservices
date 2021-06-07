@@ -18,7 +18,7 @@ public class SecurityApplicationProperties {
     /**
      * Le temps d'expiration du token
      */
-    private long expirationTime;
+    private Long expirationTime;
 
     /**
      * Le prefix du token une fois inséré dans le header HTTP
@@ -38,11 +38,11 @@ public class SecurityApplicationProperties {
         this.secret = secret;
     }
 
-    public long getExpirationTime() {
+    public Long getExpirationTime() {
         return expirationTime;
     }
 
-    public void setExpirationTime(long expirationTime) {
+    public void setExpirationTime(Long expirationTime) {
         this.expirationTime = expirationTime;
     }
 

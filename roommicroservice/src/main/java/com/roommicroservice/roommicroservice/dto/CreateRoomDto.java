@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateRoomDto {
-    long cardId;
-    long bet;
+    Long cardId;
+    Long bet;
     String name;
 }

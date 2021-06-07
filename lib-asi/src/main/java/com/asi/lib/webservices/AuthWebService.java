@@ -12,8 +12,8 @@ public interface AuthWebService {
     @PostMapping("/private/auth/getJWTToken")
     String getJWTToken(UserDTO userDTO);
 
-    @GetMapping("/private/auth/verifyJWTToken")
-    Boolean verifyJWTToken(String token);
+    @GetMapping("/private/auth/verifyJWTToken/{token}")
+    Boolean verifyJWTToken(@PathVariable String token);
 
     @PostMapping("/private/auth/getUser")
     UserDTO getUser(String token);

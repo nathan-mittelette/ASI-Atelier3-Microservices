@@ -50,7 +50,7 @@ public class Card implements Serializable {
     private Long price;
 
     @Column(name = "available")
-    private boolean available;
+    private Boolean available;
 
     @Column(name = "userid")
     private Long userId;
