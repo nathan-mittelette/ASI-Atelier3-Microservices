@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient(name = "user-micro-service", contextId = "userWebService", url = "http://localhost:5004")
+@FeignClient(name = "user-micro-service", contextId = "userWebService", url = "http://${service.name.user:localhost}:5004")
 public interface UserWebService {
 
     @GetMapping("/public/users/{id}")
