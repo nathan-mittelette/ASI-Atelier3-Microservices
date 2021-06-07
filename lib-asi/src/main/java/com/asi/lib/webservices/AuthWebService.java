@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = "auth-micro-service", contextId = "authWebService", url = "http://localhost:5000")
+@FeignClient(name = "auth-micro-service", contextId = "authWebService", url = "http://${service.name.auth:localhost}:5000")
 public interface AuthWebService {
 
     @PostMapping("/private/auth/getJWTToken")

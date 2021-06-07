@@ -6,3 +6,5 @@ WORKDIR $HOME
 COPY target/*.jar $HOME/demo.jar
 
 ENTRYPOINT java -jar demo.jar
+
+EXPOSE 5004
