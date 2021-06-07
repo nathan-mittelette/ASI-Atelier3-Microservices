@@ -3,8 +3,7 @@ package com.asi.lib.enums;
 public enum ERoomState {
     CREATED("CREATED"),
     JOINED("JOINED"),
-    CARDSSETTED("CARDSSETTED"),
-    DONE("DONE");
+    FINISHED("FINISHED");
 
     private final String text;
 
@@ -22,11 +21,8 @@ public enum ERoomState {
             case "JOINED":
                 state = ERoomState.JOINED;
                 break;
-            case "CARDSETTED":
-                state = ERoomState.CARDSSETTED;
-                break;
-            case "DONE":
-                state = ERoomState.DONE;
+            case "FINISHED":
+                state = ERoomState.FINISHED;
                 break;
         }
 
