@@ -26,8 +26,8 @@ public class AuthController {
         return _authService.verifyJWTToken(token) ? new ResponseEntity<Boolean>(true, HttpStatus.OK) : new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(value = "/getUser")
-    public UserDTO getUser(String token) throws Exception {
+    @PostMapping(value = "/getUser")
+    public UserDTO getUser(@RequestBody String token) throws Exception {
         return _authService.getUser(token);
     }
 }

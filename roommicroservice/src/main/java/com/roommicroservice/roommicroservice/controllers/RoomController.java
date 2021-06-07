@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/secure/rooms")
+@RequestMapping("/secured/rooms")
 public class RoomController {
 
     private final IRoomService _roomService;
