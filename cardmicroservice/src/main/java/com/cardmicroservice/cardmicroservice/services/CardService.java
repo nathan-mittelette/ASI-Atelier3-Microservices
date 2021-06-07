@@ -9,6 +9,7 @@ import com.cardmicroservice.cardmicroservice.mapper.CardMapper;
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.repositories.CardRepository;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,14 +36,11 @@ public class CardService extends CrudService<Card> implements ICardService {
         return _cardMapper.toDTO(card);
     }
 
-    public List<CardDTO> getByUserId(Long userId) {
-        UserDTO user = _userWebService.getById(userId);
-
-        if (user == null) {
-            throw new RuntimeException("Invalid user id");
-        }
-
-        return _cardRepository.getByUserId(userId).stream().map(c -> _cardMapper.toDTO(c)).collect(Collectors.toList());
+    public List<CardDTO> getCurrentUserCards(UserDTO userDTO) {
+        return _cardRepository.getByUserId(userDTO.getId())
+                .stream()
+                .map(c -> _cardMapper.toDTO(c))
+                .collect(Collectors.toList());
     }
 
     public CardDTO createRandomCard(Long userId) {

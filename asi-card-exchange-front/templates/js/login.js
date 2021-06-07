@@ -9,14 +9,15 @@ window.addEventListener('load', function() {
 })
 function login() {
     const Http = new XMLHttpRequest();
-    const url='http://localhost:5000/public/users/login';
+    const url='http://localhost:5004/public/users/login';
 
     const login = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     Http.open("POST", url);
 
-    Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    Http.setRequestHeader("Content-Type", "application/json");
+    Http.setRequestHeader("Accept", "*/*");
 
     Http.onreadystatechange = (e) => {
         if (Http.readyState === XMLHttpRequest.DONE && Http.status === 200) {
