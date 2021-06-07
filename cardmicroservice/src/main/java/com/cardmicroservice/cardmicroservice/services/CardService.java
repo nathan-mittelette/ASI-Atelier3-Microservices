@@ -3,6 +3,7 @@ package com.cardmicroservice.cardmicroservice.services;
 import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.services.CrudService;
+import com.asi.lib.webservices.UserWebService;
 import com.cardmicroservice.cardmicroservice.mapper.CardMapper;
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.repositories.CardRepository;
@@ -19,16 +20,28 @@ public class CardService extends CrudService<Card> implements ICardService {
 
     private CardRepository _cardRepository;
     private CardMapper _cardMapper;
+    private UserWebService _userWebService;
 
-    public CardService(CardRepository repository, CardMapper cardMapper) {
+    public CardService(CardRepository repository, CardMapper cardMapper, UserWebService _userWebService) {
         super(repository);
         _cardRepository = repository;
         _cardMapper = cardMapper;
+        _userWebService = _userWebService;
     }
 
     public CardDTO getById(Long id) {
         Card card = _repository.findById(id).orElseThrow(() -> new RuntimeException("Card not found."));
         return _cardMapper.toDTO(card);
+    }
+
+    public List<CardDTO> getByUserId(Long userId) {
+        UserDTO user = _userWebService.getById(userId);
+
+        if (user == null) {
+            throw new RuntimeException("Invalid user id");
+        }
+
+        return _cardRepository.getByUserId(userId).stream().map(c -> _cardMapper.toDTO(c)).collect(Collectors.toList());
     }
 
     public CardDTO createRandomCard(Long userId) {

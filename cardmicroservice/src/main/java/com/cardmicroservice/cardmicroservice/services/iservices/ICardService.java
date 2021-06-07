@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ICardService extends ICrudService<Card> {
     List<CardDTO> findAllAvailable();
+    List<CardDTO> getByUserId(Long userId);
 
     CardDTO getById(Long id);
 

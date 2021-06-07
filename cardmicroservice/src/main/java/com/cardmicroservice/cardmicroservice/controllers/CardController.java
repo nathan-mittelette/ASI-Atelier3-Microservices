@@ -22,6 +22,11 @@ public class CardController {
         return _cardService.getById(id);
     }
 
+    @GetMapping(value = "/secured/cards/user/{id}")
+    public List<CardDTO> getByUserId(@PathVariable Long id) {
+        return _cardService.getByUserId(id);
+    }
+
     @GetMapping(value = "/secured/cards/available")
     public List<CardDTO> getAvailable() {
         return _cardService.findAllAvailable();

@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
 })
 function login() {
     const Http = new XMLHttpRequest();
-    const url='http://localhost:5000/users/login';
+    const url='http://localhost:5000/public/users/login';
 
     const login = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -29,4 +29,3 @@ function login() {
 
     Http.send(JSON.stringify({"login": login, "password": password}));
 }
-
