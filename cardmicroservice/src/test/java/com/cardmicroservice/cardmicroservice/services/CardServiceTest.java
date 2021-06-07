@@ -83,7 +83,7 @@ public class CardServiceTest {
         // de call de retourner la liste créé au dessus
         when(cardRepository.findById(id)).thenReturn(Optional.of(card));
 
-        // On spécifie que lorsque le cardMapper aura la méthode toDTOList
+        // On spécifie que lorsque le cardMapper aura la méthode toDTO
         // avec la liste de retour du cardRepository de retourner les cardDTO.
         when(cardMapper.toDTO(card)).thenReturn(cardDTO);
 
@@ -101,7 +101,7 @@ public class CardServiceTest {
 
     @Test
     public void findByIdDTO_whenNotExist_ReturnAsiException() {
-        Long id = 1L;
+        Long id = -1L;
 
         // On spécifie que lorsque le cardRepository aura la méthode findById
         // de call de retourner une optional de null.
