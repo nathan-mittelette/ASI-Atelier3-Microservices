@@ -1,5 +1,6 @@
 package com.usermicroservice.usermicroservice.controllers;
 
+import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.dto.UserLoginDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -44,5 +45,10 @@ public class UserController {
     @GetMapping(value = "/current")
     public UserDTO getCurrent(@AuthenticationPrincipal final UserDTO userDTO) {
         return this._userService.getCurrent(userDTO);
+    }
+
+    @PutMapping(value = "/private/cards/update")
+    public UserDTO update(@RequestBody UserDTO userDTO) {
+        return _userService.update(userDTO);
     }
 }

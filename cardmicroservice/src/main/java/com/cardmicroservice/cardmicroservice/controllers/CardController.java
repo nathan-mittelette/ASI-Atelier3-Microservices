@@ -31,4 +31,9 @@ public class CardController {
     public CardDTO createRandom(@RequestBody Long userId) {
         return _cardService.createRandomCard(userId);
     }
+
+    @PutMapping(value = "/private/cards/update")
+    public CardDTO update(@RequestBody CardDTO cardDTO) {
+        return _cardService.update(cardDTO);
+    }
 }

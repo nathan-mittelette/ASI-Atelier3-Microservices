@@ -54,45 +54,9 @@ public class CardService extends CrudService<Card> implements ICardService {
         return _cardRepository.findAllAvailable().stream().map(r -> _cardMapper.toDTO(r)).collect(Collectors.toList());
     }
 
-    @Override
-    public void buyCard(UserDTO buyerDTO, Long cardId) {
-        Card card = _cardRepository.findById(cardId).get();
-        //User buyer = this.userMapper.toUser(buyerDTO);
-        // TODO faire les appels via le webService
-        //User seller = card.getUser();
-
-        //this.sellOperation(buyer, seller, card);
-    }
-
-    @Override
-    public void sellCard(UserDTO sellerDTO, Long cardId, Long buyerId) {
-        Card card = _cardRepository.findById(cardId).get();
-        //User seller = this.userMapper.toUser(sellerDTO);
-        //User buyer = this.userService.findById(buyerId).get();
-
-        //this.sellOperation(buyer, seller, card);
-    }
-
-    private void sellOperation(UserDTO seller, UserDTO buyer, Card card) {
-        if (card == null || seller == null || buyer == null) {
-            throw new RuntimeException("Wrong operation.");
-        }
-
-        if (buyer.getMoney() < card.getPrice()) {
-            throw new RuntimeException("Not enough money.");
-        }
-
-        // TODO adapter avec les microservices
-        //card.setUser(buyer);
-        buyer.setMoney(buyer.getMoney() - card.getPrice());
-
-        // we can buy available cards = no seller
-        if (seller != null) {
-            seller.setMoney(seller.getMoney() + card.getPrice());
-        }
-
+    public CardDTO update(CardDTO cardDTO) {
+        Card card = _cardMapper.toBo(cardDTO);
         this.insertOrUpdate(card);
-        // this.userService.insertOrUpdate(seller);
-        // this.userService.insertOrUpdate(buyer);
+        return _cardMapper.toDTO(card);
     }
 }
