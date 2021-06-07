@@ -1,15 +1,13 @@
 version: '3.7'
 services:
   auth-api-service:
-    build: authmicroservice/.
+    build: authmicroservice
     ports:
       - "5000:5000"
     networks:
       - api-network
-
   card-api-service:
-    build: cardmicroservice/.
-    command: mvnw.cmd flyway:migrate
+    build: cardmicroservice
     depends_on:
       - card-database-service
     environment:
@@ -34,16 +32,14 @@ services:
       - card-network
 
   market-api-service:
-    build: marketmicroservice/.
-    command: mvnw.cmd flyway:migrate
+    build: marketmicroservice
     ports:
       - "5002:5002"
     networks:
       - api-network
 
   room-api-service:
-    build: roommicroservice/.
-    command: mvnw.cmd flyway:migrate
+    build: roommicroservice
     depends_on:
       - room-database-service
     environment:
@@ -69,8 +65,7 @@ services:
 
 
   user-api-service:
-    build: usermicroservice/.
-    command: mvnw.cmd flyway:migrate
+    build: usermicroservice
     depends_on:
       - user-database-service
     environment:
