@@ -2,7 +2,7 @@ let cardList = [];
 
 $(document).ready(function () {
   const template = document.querySelector("#row");
-  console.log("Récupération des cartes");
+  console.log("Récupération des cartes disponibles");
 
   if (localStorage.getItem('auth') != null) {
     // Récupération de l'utilisateur courrant.
