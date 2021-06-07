@@ -1,27 +1,57 @@
 package com.cardmicroservice.cardmicroservice.services;
 
+import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.services.CrudService;
+import com.cardmicroservice.cardmicroservice.mapper.CardMapper;
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.repositories.CardRepository;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Service
 public class CardService extends CrudService<Card> implements ICardService {
 
     private CardRepository _cardRepository;
+    private CardMapper _cardMapper;
 
-    public CardService(CardRepository repository) {
+    public CardService(CardRepository repository, CardMapper cardMapper) {
         super(repository);
         _cardRepository = repository;
+        _cardMapper = cardMapper;
+    }
+
+    public CardDTO getById(Long id) throws Exception {
+        Card card = _repository.findById(id).orElseThrow(() -> new Exception("Card not found."));
+        return _cardMapper.toDTO(card);
+    }
+
+    public CardDTO createRandomCard(Long userId) {
+        Card card = new Card();
+        card.setName(UUID.randomUUID().toString().replace("-", ""));
+        card.setDescription(UUID.randomUUID().toString().replace("-", ""));
+        card.setFamily(UUID.randomUUID().toString().replace("-", ""));
+        card.setAffinity(UUID.randomUUID().toString().replace("-", ""));
+        card.setHp(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
+        card.setEnergy(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
+        card.setAttack(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
+        card.setDefense(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
+        card.setPrice(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
+        card.setUserid(userId);
+
+        this.insertOrUpdate(card);
+
+        return _cardMapper.toDTO(card);
     }
 
     @Override
-    public List<Card> findAllAvailable() {
-        return _cardRepository.findAllAvailable();
+    public List<CardDTO> findAllAvailable() {
+        return _cardRepository.findAllAvailable().stream().map(r -> _cardMapper.toDTO(r)).collect(Collectors.toList());
     }
 
     @Override
