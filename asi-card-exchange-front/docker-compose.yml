@@ -1,7 +1,5 @@
 web:
-    image: nginx
-    volumes:
-     - ./templates:/etc/nginx/templates
+    build: ./
     ports:
      - "8080:80"
     environment:

@@ -10,21 +10,21 @@
     />
 
     <!-- Site Properties -->
-    <title>Card Game - Sell</title>
+    <title>Card Game - Buy</title>
 
     <link
       rel="stylesheet"
       type="text/css"
-      href="../lib/Semantic-UI-CSS-master/semantic.min.css"
+      href="lib/Semantic-UI-CSS-master/semantic.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="../css/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../css/sell.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="css/buy.css" />
   </head>
 
   <body>
     <div id="navbar"></div>
 
-    <div class="ui grid sell-content">
+    <div class="ui grid buy-content">
       <div class="ten wide column">
         <h3 class="ui aligned header">Cards</h3>
         <!------------------------------------------------------------------------->
@@ -62,8 +62,8 @@
                 <td>{{attack}}</td>
                 <td>{{price}}$</td>
                 <td>
-                  <div class="ui vertical animated button sell-button" tabindex="0">
-                    <div class="hidden content">Sell</div>
+                  <div class="ui vertical animated button buy-button" tabindex="0">
+                    <div class="hidden content">Buy</div>
                     <div class="visible content">
                       <i class="shop icon"></i>
                     </div>
@@ -160,9 +160,9 @@
       </template>
     </div>
   </body>
-  <script src="../lib/jquery-3.3.1.min.js"></script>
-  <script src="../lib/Semantic-UI-CSS-master/semantic.js"></script>
-  <script src="../js/sell.js"></script>
+  <script src="lib/jquery-3.3.1.min.js"></script>
+  <script src="lib/Semantic-UI-CSS-master/semantic.js"></script>
+  <script src="js/buy.js"></script>
   <script>
     $(function () {
       $("#navbar").load("./navbar.html");
