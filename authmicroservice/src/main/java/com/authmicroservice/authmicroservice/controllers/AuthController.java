@@ -22,12 +22,12 @@ public class AuthController {
     }
 
     @GetMapping(value = "/verifyJWTToken")
-    public ResponseEntity getJWTToken(@RequestHeader("Authorization") String token) {
-        return new ResponseEntity<>(_authService.verifyJWTToken(token) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<Boolean> getJWTToken(String token) {
+        return _authService.verifyJWTToken(token) ? new ResponseEntity<Boolean>(true, HttpStatus.OK) : new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(value = "/getUser")
-    public UserDTO getUser(@RequestHeader("Authorization") String token) throws Exception {
+    public UserDTO getUser(String token) throws Exception {
         return _authService.getUser(token);
     }
 }

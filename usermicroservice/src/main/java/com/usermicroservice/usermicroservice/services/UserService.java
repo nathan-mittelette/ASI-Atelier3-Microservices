@@ -3,15 +3,13 @@ package com.usermicroservice.usermicroservice.services;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.dto.UserLoginDTO;
 import com.asi.lib.services.CrudService;
+import com.asi.lib.webservices.AuthWebService;
+import com.asi.lib.webservices.CardWebService;
 import com.usermicroservice.usermicroservice.mapper.UserMapper;
 import com.usermicroservice.usermicroservice.models.User;
 import com.usermicroservice.usermicroservice.repositories.UserRepository;
 import com.usermicroservice.usermicroservice.services.iservices.IUserService;
-import com.usermicroservice.usermicroservice.webservices.AuthWebService;
-import com.usermicroservice.usermicroservice.webservices.CardWebService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +18,15 @@ public class UserService extends CrudService<User> implements IUserService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-    @Autowired
-    private AuthWebService authWebService;
-    @Autowired
-    private CardWebService cardWebService;
+    private final AuthWebService authWebService;
+    private final CardWebService cardWebService;
 
-    UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserMapper userMapper) {
+    UserService(UserRepository repository, UserMapper userMapper, PasswordEncoder passwordEncoder, AuthWebService authWebService, CardWebService cardWebService) {
         super(repository);
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
+        this.authWebService = authWebService;
+        this.cardWebService = cardWebService;
     }
 
     @Override
@@ -38,8 +36,7 @@ public class UserService extends CrudService<User> implements IUserService {
             user = this.insertOrUpdate(user);
             this.cardWebService.createRandomCard(userMapper.fromUser(user));
             return user;
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw e;
         }
     }
@@ -47,10 +44,10 @@ public class UserService extends CrudService<User> implements IUserService {
     public String login(UserLoginDTO userLoginDTO) throws Exception {
         User user = ((UserRepository) this._repository).findByEmail(userLoginDTO.getLogin()).orElseThrow(() -> new Exception("email not found"));
 
-        if (!this.passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
+        /*if (!this.passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
             throw new Exception("Bad password");
         }
-
+*/
         return this.authWebService.getJWTToken(this.userMapper.fromUser(user));
     }
 

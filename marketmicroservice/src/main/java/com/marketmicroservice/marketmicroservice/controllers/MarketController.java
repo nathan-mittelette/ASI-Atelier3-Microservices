@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-@RequestMapping("/market")
+@RequestMapping("/secured/market")
 public class MarketController {
     private final IMarketService _marketService;
 

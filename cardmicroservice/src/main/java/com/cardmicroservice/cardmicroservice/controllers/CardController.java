@@ -2,14 +2,16 @@ package com.cardmicroservice.cardmicroservice.controllers;
 
 import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController()
-@RequestMapping("/cards")
+@RequestMapping("/secured/cards")
 public class CardController {
     private final ICardService _cardService;
 

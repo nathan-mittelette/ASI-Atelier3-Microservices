@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ICardService extends ICrudService<Card> {
     List<Card> findAllAvailable();
+
     void buyCard(UserDTO buyerDTO, Long cardId) throws Exception;
+
     void sellCard(UserDTO seller, Long cardId, Long buyerId) throws Exception;
 }

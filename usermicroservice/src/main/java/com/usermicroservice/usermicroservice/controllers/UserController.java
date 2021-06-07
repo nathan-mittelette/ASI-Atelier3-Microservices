@@ -11,10 +11,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController()
-@RequestMapping("/users")
+@RequestMapping("/public/users")
 public class UserController {
     private final IUserService _userService;
     private UserMapper _userMapper;
@@ -33,8 +31,7 @@ public class UserController {
     public void signUp(@RequestBody User user) throws JsonProcessingException, DataIntegrityViolationException {
         try {
             this._userService.createUser(user);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw new ConflictException("Email already assigned :" + user.getEmail());
         }
     }

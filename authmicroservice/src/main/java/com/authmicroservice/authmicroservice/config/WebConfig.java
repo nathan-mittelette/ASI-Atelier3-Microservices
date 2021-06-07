@@ -2,7 +2,6 @@ package com.authmicroservice.authmicroservice.config;
 
 import com.authmicroservice.authmicroservice.config.property.SecurityApplicationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,9 +31,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers().permitAll()
-                .antMatchers(HttpMethod.POST, "/private/auth/getJWTToken").permitAll()
-                .antMatchers(HttpMethod.GET, "/private/auth/verifyJWTToken", "/private/auth/getUser").permitAll()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/private/**").permitAll()
+                .antMatchers("/secured/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -2,9 +2,9 @@ package com.usermicroservice.usermicroservice.mapper;
 
 import com.asi.lib.dto.UserDTO;
 import com.usermicroservice.usermicroservice.models.User;
+import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
-import org.mapstruct.Mapper;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
