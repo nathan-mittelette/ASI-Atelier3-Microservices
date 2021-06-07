@@ -26,8 +26,8 @@ public class CardService extends CrudService<Card> implements ICardService {
         _cardMapper = cardMapper;
     }
 
-    public CardDTO getById(Long id) throws Exception {
-        Card card = _repository.findById(id).orElseThrow(() -> new Exception("Card not found."));
+    public CardDTO getById(Long id) {
+        Card card = _repository.findById(id).orElseThrow(() -> new RuntimeException("Card not found."));
         return _cardMapper.toDTO(card);
     }
 
@@ -42,7 +42,7 @@ public class CardService extends CrudService<Card> implements ICardService {
         card.setAttack(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
         card.setDefense(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
         card.setPrice(Long.valueOf(ThreadLocalRandom.current().nextInt(1, 100 + 1)));
-        card.setUserid(userId);
+        card.setUserId(userId);
 
         this.insertOrUpdate(card);
 
@@ -55,7 +55,7 @@ public class CardService extends CrudService<Card> implements ICardService {
     }
 
     @Override
-    public void buyCard(UserDTO buyerDTO, Long cardId) throws Exception {
+    public void buyCard(UserDTO buyerDTO, Long cardId) {
         Card card = _cardRepository.findById(cardId).get();
         //User buyer = this.userMapper.toUser(buyerDTO);
         // TODO faire les appels via le webService
@@ -65,7 +65,7 @@ public class CardService extends CrudService<Card> implements ICardService {
     }
 
     @Override
-    public void sellCard(UserDTO sellerDTO, Long cardId, Long buyerId) throws Exception {
+    public void sellCard(UserDTO sellerDTO, Long cardId, Long buyerId) {
         Card card = _cardRepository.findById(cardId).get();
         //User seller = this.userMapper.toUser(sellerDTO);
         //User buyer = this.userService.findById(buyerId).get();
@@ -73,13 +73,13 @@ public class CardService extends CrudService<Card> implements ICardService {
         //this.sellOperation(buyer, seller, card);
     }
 
-    private void sellOperation(UserDTO seller, UserDTO buyer, Card card) throws Exception {
+    private void sellOperation(UserDTO seller, UserDTO buyer, Card card) {
         if (card == null || seller == null || buyer == null) {
-            throw new Exception("Wrong operation.");
+            throw new RuntimeException("Wrong operation.");
         }
 
         if (buyer.getMoney() < card.getPrice()) {
-            throw new Exception("Not enough money.");
+            throw new RuntimeException("Not enough money.");
         }
 
         // TODO adapter avec les microservices

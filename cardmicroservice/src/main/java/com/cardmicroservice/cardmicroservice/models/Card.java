@@ -50,5 +50,5 @@ public class Card implements Serializable {
     private Long price;
 
     @Column(name = "userid")
-    private Long userid;
+    private Long userId;
 }

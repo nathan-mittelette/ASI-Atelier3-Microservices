@@ -18,17 +18,17 @@ public class CardController {
     }
 
     @GetMapping(value = "/private/cards/{id}")
-    public CardDTO getCardById(@PathVariable Long id) throws Exception {
+    public CardDTO getById(@PathVariable Long id) {
         return _cardService.getById(id);
     }
 
     @GetMapping(value = "/secured/cards/available")
-    public List<CardDTO> getAvailableCards() {
+    public List<CardDTO> getAvailable() {
         return _cardService.findAllAvailable();
     }
 
     @PostMapping(value = "/private/cards/createRandom")
-    public CardDTO createRandomCard(@RequestBody Long userId) {
+    public CardDTO createRandom(@RequestBody Long userId) {
         return _cardService.createRandomCard(userId);
     }
 }

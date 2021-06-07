@@ -19,9 +19,9 @@ public class Player implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "userId")
+    @Column(name = "userid")
     private Long userId;
 
-    @Column(name = "cardId")
+    @Column(name = "cardid")
     private Long cardId;
 }
