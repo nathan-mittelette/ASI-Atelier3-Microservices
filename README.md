@@ -1,6 +1,6 @@
 # ASI Step 3
 
-## Compiliation du projet
+## Compilation du projet
 
 Chaque microservice ou library du projet est un module du `pom.xml` présent à la racine du projet. Lorsque vous
 souhaitez lancer le projet, vous devez effectuer la commande suivante à la racine du projet :
@@ -10,6 +10,12 @@ mvn clean install -DskipTests
 ```
 
 Cela va compiler tous les microservices et les library du projet.
+
+On peut ensuite lancer le docker-compose avec l'ensemble des microservices
+
+```bash
+docker-compose up --build
+```
 
 ## Lors du développement
 
