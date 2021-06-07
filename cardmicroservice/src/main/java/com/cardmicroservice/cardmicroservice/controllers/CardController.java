@@ -1,13 +1,10 @@
 package com.cardmicroservice.cardmicroservice.controllers;
 
 import com.asi.lib.dto.CardDTO;
-import com.asi.lib.dto.UserDTO;
-import com.cardmicroservice.cardmicroservice.models.Card;
 import com.cardmicroservice.cardmicroservice.services.iservices.ICardService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CardController {
