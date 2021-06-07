@@ -36,23 +36,21 @@ public class RoomService extends CrudService<Room> implements IRoomService {
     }
 
     @Override
-    public RoomDTO createRoom(UserDTO userDTO, CreateRoomDto createRoomDto) throws Exception {
+    public RoomDTO createRoom(UserDTO userDTO, CreateRoomDto createRoomDto) {
         Player player = VerifyAndExtractPlayer(userDTO.getId(), createRoomDto.getCardId());
-
-        _playerRepository.save(player);
 
         Room room = new Room();
         room.setPlayer1(player);
         room.setBet(createRoomDto.getBet());
         room.setState(ERoomState.CREATED);
 
-        room = _repository.save(room);
+        _repository.save(room);
 
         return _roomMapper.toDTO(room);
     }
 
-    public RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto) throws Exception {
-        Room room = _repository.findById(joinRoomDto.getRoomId()).orElseThrow(() -> new Exception("Room not found."));
+    public RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto) {
+        Room room = _repository.findById(joinRoomDto.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found."));
 
         Player player = VerifyAndExtractPlayer(userDTO.getId(), joinRoomDto.getCardId());
 
@@ -69,16 +67,18 @@ public class RoomService extends CrudService<Room> implements IRoomService {
         return rooms.stream().map(r -> _roomMapper.toDTO(r)).collect(Collectors.toList());
     }
 
-    private Player VerifyAndExtractPlayer(long userId, long cardId) throws Exception {
+    private Player VerifyAndExtractPlayer(long userId, long cardId) {
         CardDTO card = _cardWebService.getById(cardId);
 
-        if (card.getUser().getId() != userId) {
-            throw new Exception("Invalid data");
+        if (card.getUserId() != userId) {
+            throw new RuntimeException("Invalid data");
         }
 
         Player player = new Player();
         player.setUserId(userId);
         player.setCardId(card.getId());
+
+        _playerRepository.save(player);
 
         return player;
     }

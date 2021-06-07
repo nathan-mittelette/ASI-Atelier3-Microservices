@@ -10,7 +10,7 @@ import com.roommicroservice.roommicroservice.models.Room;
 import java.util.List;
 
 public interface IRoomService extends ICrudService<Room> {
-    RoomDTO createRoom(UserDTO userDTO, CreateRoomDto createRoomDto) throws Exception;
-    RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto) throws Exception;
+    RoomDTO createRoom(UserDTO userDTO, CreateRoomDto createRoomDto);
+    RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto);
     List<RoomDTO> getAllCreated();
 }

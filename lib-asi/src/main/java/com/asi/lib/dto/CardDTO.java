@@ -23,6 +23,6 @@ public class CardDTO implements Serializable {
     private Long attack;
     private Long defense;
     private Long price;
-    private UserDTO user;
-
+    private Long userId;
+    private Boolean available;
 }

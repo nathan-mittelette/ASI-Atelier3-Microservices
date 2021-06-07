@@ -21,11 +21,11 @@ public class Room implements Serializable {
     private Long id;
 
     @OneToOne()
-    @JoinColumn(name = "player1Id", referencedColumnName = "id")
+    @JoinColumn(name = "player1id", referencedColumnName = "id")
     private Player player1;
 
     @OneToOne()
-    @JoinColumn(name = "player2Id", referencedColumnName = "id")
+    @JoinColumn(name = "player2id", referencedColumnName = "id")
     private Player player2;
 
     @Enumerated(EnumType.STRING)

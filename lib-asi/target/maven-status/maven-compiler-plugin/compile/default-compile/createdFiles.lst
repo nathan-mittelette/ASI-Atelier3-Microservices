@@ -1,6 +1,7 @@
 com\asi\lib\config\AbstractWebConfig.class
 com\asi\lib\webservices\AuthWebService.class
 com\asi\lib\webservices\CardWebService.class
+com\asi\lib\webservices\UserWebService.class
 com\asi\lib\dto\UserLoginDTO.class
 com\asi\lib\config\FeingConfiguration.class
 com\asi\lib\dto\CardDTO.class
