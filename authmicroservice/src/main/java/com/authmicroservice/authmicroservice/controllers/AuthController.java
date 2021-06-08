@@ -21,8 +21,8 @@ public class AuthController {
         return _authService.getJWTToken(userDTO);
     }
 
-    @GetMapping(value = "/verifyJWTToken/{token}")
-    public ResponseEntity<Boolean> getJWTToken(@PathVariable String token) {
+    @GetMapping(value = "/verifyJWTToken")
+    public ResponseEntity<Boolean> verifyJWTToken(@RequestHeader(value="Authorization") String token) {
         return _authService.verifyJWTToken(token) ? new ResponseEntity<Boolean>(true, HttpStatus.OK) : new ResponseEntity<Boolean>(false, HttpStatus.FORBIDDEN);
     }
 
