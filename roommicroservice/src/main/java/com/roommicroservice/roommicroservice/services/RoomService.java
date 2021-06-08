@@ -43,6 +43,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
         room.setPlayer1(player);
         room.setBet(createRoomDto.getBet());
         room.setState(ERoomState.CREATED);
+        room.setName(createRoomDto.getName());
 
         _repository.save(room);
 
@@ -64,7 +65,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
 
     public List<RoomDTO> getAllCreated() {
         List<Room> rooms = _roomRepository.getAllCreated();
-        return rooms.stream().map(r -> _roomMapper.toDTO(r)).collect(Collectors.toList());
+        return _roomMapper.toDTOList(rooms);
     }
 
     private Player VerifyAndExtractPlayer(Long userId, Long cardId) {

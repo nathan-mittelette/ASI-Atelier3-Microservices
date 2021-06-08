@@ -19,6 +19,7 @@ CREATE TABLE public.room
     player2id bigint,
     state     character varying(255),
     bet       bigint,
+    name      character varying(255),
     CONSTRAINT pk_user PRIMARY KEY (id),
     CONSTRAINT fk_playerd1Id FOREIGN KEY (player1id)
         REFERENCES public.player (id) MATCH SIMPLE

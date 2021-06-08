@@ -37,17 +37,17 @@ function displayCards() {
     let clone = document.importNode(template.content, true);
 
     newContent = clone.firstElementChild.innerHTML
-        .replace(/{{card_id}}/g, card.id)
-        .replace(/{{family_src}}/g, card.family)
-        .replace(/{{family_name}}/g, card.family)
-        .replace(/{{img_src}}/g, card.imageUrl)
-        .replace(/{{name}}/g, card.name)
-        .replace(/{{description}}/g, card.description)
-        .replace(/{{hp}}/g, card.hp)
-        .replace(/{{energy}}/g, card.energy)
-        .replace(/{{attack}}/g, card.attack)
-        .replace(/{{defense}}/g, card.defense)
-        .replace(/{{price}}/g, card.price);
+      .replace(/{{card_id}}/g, card.id)
+      .replace(/{{family_src}}/g, card.family)
+      .replace(/{{family_name}}/g, card.family)
+      .replace(/{{img_src}}/g, card.imageUrl)
+      .replace(/{{name}}/g, card.name)
+      .replace(/{{description}}/g, card.description)
+      .replace(/{{hp}}/g, card.hp)
+      .replace(/{{energy}}/g, card.energy)
+      .replace(/{{attack}}/g, card.attack)
+      .replace(/{{defense}}/g, card.defense)
+      .replace(/{{price}}/g, card.price);
     clone.firstElementChild.innerHTML = newContent;
 
     clone.firstElementChild.addEventListener("click", () => {
@@ -62,7 +62,7 @@ function displayCards() {
     cardContainer.appendChild(clone);
   }
 
-  if(cardList.length > 0) {
+  if (cardList.length > 0) {
     switchToCard(cardList[0].id);
   }
 }
@@ -108,13 +108,13 @@ function switchToCard(cardId) {
     .replace(/{{attack}}/g, card.attack)
     .replace(/{{defense}}/g, card.defense)
     .replace(/{{price}}/g, card.price);
-    clone.firstElementChild.innerHTML = newContent;
+  clone.firstElementChild.innerHTML = newContent;
 
-    const cardContainer = document.getElementById("card");
+  const cardContainer = document.getElementById("card");
 
-    while (cardContainer.firstChild) {
-        cardContainer.removeChild(cardContainer.firstChild);
-    }
+  while (cardContainer.firstChild) {
+    cardContainer.removeChild(cardContainer.firstChild);
+  }
 
-    cardContainer.appendChild(clone);
+  cardContainer.appendChild(clone);
 }

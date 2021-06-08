@@ -33,4 +33,7 @@ public class Room implements Serializable {
 
     @Column(name = "bet")
     private Long bet;
+
+    @Column(name = "name")
+    private String name;
 }

@@ -18,5 +18,6 @@ public class RoomDTO implements Serializable {
     private PlayerDTO player2;
     private ERoomState state;
     private Long bet;
+    private String name;
 
 }
