@@ -11,6 +11,8 @@ services:
     depends_on:
       - card-database-service
     environment:
+      - SERVICE_NAME_AUTH=auth-api-service
+      - SERVICE_NAME_USER=user-api-service
       - SPRING_DATASOURCE_URL=jdbc:postgresql://card-database-service:5432/card-database
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
@@ -23,6 +25,8 @@ services:
     image: 'postgres:13.2-alpine'
     restart: always
     environment:
+      - SERVICE_NAME_AUTH=auth-api-service
+      - SERVICE_NAME_CARD=card-api-service
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=card-database
@@ -37,12 +41,29 @@ services:
       - "5002:5002"
     networks:
       - api-network
+    environment:
+      - SERVICE_NAME_AUTH=auth-api-service
+      - SERVICE_NAME_USER=user-api-service
+      - SERVICE_NAME_CARD=card-api-service
+
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - api-network
 
   room-api-service:
     build: roommicroservice
     depends_on:
       - room-database-service
     environment:
+      - SERVICE_NAME_AUTH=auth-api-service
+      - SERVICE_NAME_CARD=card-api-service
       - SPRING_DATASOURCE_URL=jdbc:postgresql://room-database-service:5432/room-database
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
@@ -63,12 +84,13 @@ services:
     networks:
       - room-network
 
-
   user-api-service:
     build: usermicroservice
     depends_on:
       - user-database-service
     environment:
+      - SERVICE_NAME_AUTH=auth-api-service
+      - SERVICE_NAME_CARD=card-api-service
       - SPRING_DATASOURCE_URL=jdbc:postgresql://user-database-service:5432/user-database
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
