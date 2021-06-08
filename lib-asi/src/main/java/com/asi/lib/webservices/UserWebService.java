@@ -16,6 +16,6 @@ public interface UserWebService {
     @GetMapping("/public/users/{id}")
     UserDTO getById(@PathVariable Long id);
 
-    @PutMapping("/private/cards/update")
+    @PutMapping("/private/users/update")
     UserDTO update(UserDTO userDTO);
 }

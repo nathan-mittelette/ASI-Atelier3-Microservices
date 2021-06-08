@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- Standard Meta -->
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <!-- Site Properties -->
-        <title>Grid Example - Semantic</title>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="lib/Semantic-UI-CSS-master/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <!-- Site Properties -->
+  <title>Grid Example - Semantic</title>
 
-    </head>
+  <link rel="stylesheet" type="text/css" href="lib/Semantic-UI-CSS-master/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
 
-    <body>
-    <div id="navbar"></div>
-    <div class="ui clearing segment home-container">
-        <div class="ui three column grid">
-            <div class="row">
-                <div class="column"></div>
-                <div class="column">
-                    <p>You don't have an account yet ? Go to <a href="signup.html">Signup page</a></p>
+</head>
 
-                    <form class="ui form" id="login_form" onsubmit="event.preventDefault();">
-                        <h3 class="ui dividing header">Login</h3>
-                        <div class="field">
-                            <label for="username">Email</label>
-                            <input type="text" name="username" placeholder="Username" id="username">
-                        </div>
-                        <div class="field">
-                            <label>Password</label>
-                            <input type="password" name="password" placeholder="Password" id="password">
-                        </div>
+<body>
+  <div id="navbar"></div>
+  <div class="ui clearing segment home-container">
+    <div class="ui three column grid">
+      <div class="row">
+        <div class="column"></div>
+        <div class="column">
+          <p>You don't have an account yet ? Go to <a href="signup.html">Signup page</a></p>
 
-                            <button class="ui secondary button" id="login_button" type="submit">Submit</button>
-                            <button class="ui button" >Cancel</button>
-                    </form>
-                </div>
+          <form class="ui form" id="login_form" onsubmit="event.preventDefault();">
+            <h3 class="ui dividing header">Login</h3>
+            <div class="field">
+              <label for="username">Email</label>
+              <input type="text" name="username" placeholder="Username" id="username">
             </div>
-        </div>
-    </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" name="password" placeholder="Password" id="password">
+            </div>
 
-    </body>
-    <script src="lib/jquery-3.3.1.min.js"></script>
-    <script src="lib/Semantic-UI-CSS-master/semantic.js"></script>
-    <script src="js/login.js"></script>
-    <script>
-        $(function(){
-        $("#navbar").load("./navbar.html");
-    });
-    </script>
+            <button class="ui secondary button" id="login_button" type="submit">Submit</button>
+            <button type="button" id="cancel-button" class="ui button">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script src="lib/Semantic-UI-CSS-master/semantic.js"></script>
+<script src="js/login.js"></script>
+<script>
+  $(function () {
+    $("#navbar").load("./navbar.html");
+  });
+</script>
+
 </html>

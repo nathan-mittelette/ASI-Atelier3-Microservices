@@ -40,6 +40,7 @@ public class AuthService implements IAuthService {
     }
 
     public Boolean verifyJWTToken(String token) {
+        token = token.replaceAll("Bearer ", "");
         try {
             DecodedJWT decodedJWT = getDecodedJWT(token);
             return true;

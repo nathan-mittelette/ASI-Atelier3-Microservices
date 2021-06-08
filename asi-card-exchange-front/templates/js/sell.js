@@ -7,7 +7,7 @@ $(document).ready(function () {
   if (localStorage.getItem('auth') != null) {
     // Récupération de l'utilisateur courrant.
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5000/cards/user';
+    const url = 'http://localhost:5001/secured/cards/mine';
 
     Http.open("GET", url);
 
@@ -37,17 +37,18 @@ function displayCards() {
     let clone = document.importNode(template.content, true);
 
     newContent = clone.firstElementChild.innerHTML
-        .replace(/{{card_id}}/g, card.id)
-        .replace(/{{family_src}}/g, card.family)
-        .replace(/{{family_name}}/g, card.family)
-        .replace(/{{img_src}}/g, card.imageUrl)
-        .replace(/{{name}}/g, card.name)
-        .replace(/{{description}}/g, card.description)
-        .replace(/{{hp}}/g, card.hp)
-        .replace(/{{energy}}/g, card.energy)
-        .replace(/{{attack}}/g, card.attack)
-        .replace(/{{defense}}/g, card.defense)
-        .replace(/{{price}}/g, card.price);
+      .replace(/{{card_id}}/g, card.id)
+      .replace(/{{family_src}}/g, card.family)
+      .replace(/{{family_name}}/g, card.family)
+      .replace(/{{img_src}}/g, card.imageUrl)
+      .replace(/{{name}}/g, card.name)
+      .replace(/{{description}}/g, card.description)
+      .replace(/{{hp}}/g, card.hp)
+      .replace(/{{energy}}/g, card.energy)
+      .replace(/{{attack}}/g, card.attack)
+      .replace(/{{defense}}/g, card.defense)
+      .replace(/{{price}}/g, card.price)
+      .replace(/{{available}}/g, card.available);
     clone.firstElementChild.innerHTML = newContent;
 
     clone.firstElementChild.addEventListener("click", () => {
@@ -62,7 +63,7 @@ function displayCards() {
     cardContainer.appendChild(clone);
   }
 
-  if(cardList.length > 0) {
+  if (cardList.length > 0) {
     switchToCard(cardList[0].id);
   }
 }
@@ -71,7 +72,7 @@ function sellCard(cardId) {
   if (localStorage.getItem('auth') != null) {
     // Récupération de l'utilisateur courrant.
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5000/cards/sell/' + cardId;
+    const url = 'http://localhost:5002/secured/market/sell/' + cardId;
 
     Http.open("PUT", url);
 
@@ -97,17 +98,18 @@ function switchToCard(cardId) {
   const template = document.getElementById("card-template");
   const clone = document.importNode(template.content, true);
   const newContent = clone.firstElementChild.innerHTML
-      .replace(/{{card_id}}/g, card.id)
-      .replace(/{{family_src}}/g, card.family)
-      .replace(/{{family_name}}/g, card.family)
-      .replace(/{{img_src}}/g, card.imageUrl)
-      .replace(/{{name}}/g, card.name)
-      .replace(/{{description}}/g, card.description)
-      .replace(/{{hp}}/g, card.hp)
-      .replace(/{{energy}}/g, card.energy)
-      .replace(/{{attack}}/g, card.attack)
-      .replace(/{{defense}}/g, card.defense)
-      .replace(/{{price}}/g, card.price);
+    .replace(/{{card_id}}/g, card.id)
+    .replace(/{{family_src}}/g, card.family)
+    .replace(/{{family_name}}/g, card.family)
+    .replace(/{{img_src}}/g, card.imageUrl)
+    .replace(/{{name}}/g, card.name)
+    .replace(/{{description}}/g, card.description)
+    .replace(/{{hp}}/g, card.hp)
+    .replace(/{{energy}}/g, card.energy)
+    .replace(/{{attack}}/g, card.attack)
+    .replace(/{{defense}}/g, card.defense)
+    .replace(/{{price}}/g, card.price)
+    .replace(/{{available}}/g, card.available);
   clone.firstElementChild.innerHTML = newContent;
 
   const cardContainer = document.getElementById("card");
@@ -118,5 +120,3 @@ function switchToCard(cardId) {
 
   cardContainer.appendChild(clone);
 }
-
-

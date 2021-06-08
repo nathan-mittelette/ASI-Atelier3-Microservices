@@ -13,7 +13,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
-@RequestMapping("/public/users")
 public class UserController {
     private final IUserService _userService;
     private UserMapper _userMapper;
@@ -23,12 +22,12 @@ public class UserController {
         _userMapper = userMapper;
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/public/users/{id}")
     public UserDTO getUserById(@PathVariable Long id) throws Exception {
         return this._userMapper.fromUser(_userService.findUserById(id));
     }
 
-    @PostMapping(value = "/signup")
+    @PostMapping(value = "/public/users/signup")
     public void signUp(@RequestBody User user) throws JsonProcessingException, DataIntegrityViolationException {
         try {
             this._userService.createUser(user);
@@ -37,17 +36,17 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/public/users/login")
     public String login(@RequestBody UserLoginDTO userLoginDTO) throws Exception {
         return this._userService.login(userLoginDTO);
     }
 
-    @GetMapping(value = "/current")
+    @GetMapping(value = "/public/users/current")
     public UserDTO getCurrent(@AuthenticationPrincipal final UserDTO userDTO) {
         return this._userService.getCurrent(userDTO);
     }
 
-    @PutMapping(value = "/private/cards/update")
+    @PutMapping(value = "/private/users/update")
     public UserDTO update(@RequestBody UserDTO userDTO) {
         return _userService.update(userDTO);
     }
