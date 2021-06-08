@@ -49,7 +49,6 @@ services:
   reverse-proxy:
     container_name: reverse-proxy
     build: reverseproxy
-    restart: always
     ports:
       - "80:80"
     networks:
