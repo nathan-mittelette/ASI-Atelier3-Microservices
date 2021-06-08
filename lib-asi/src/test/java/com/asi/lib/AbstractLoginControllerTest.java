@@ -1,4 +1,4 @@
-package com.asi.lib.tests;
+package com.asi.lib;
 
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.webservices.AuthWebService;

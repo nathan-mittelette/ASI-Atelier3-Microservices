@@ -1,7 +1,7 @@
 package com.cardmicroservice.cardmicroservice.controllers;
 
+import com.asi.lib.AbstractLoginControllerTest;
 import com.asi.lib.dto.CardDTO;
-import com.asi.lib.tests.AbstractLoginControllerTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
