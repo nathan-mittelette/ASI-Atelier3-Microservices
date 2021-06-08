@@ -17,7 +17,6 @@ function login() {
     Http.open("POST", url);
 
     Http.setRequestHeader("Content-Type", "application/json");
-    Http.setRequestHeader("Accept", "*/*");
 
     Http.onreadystatechange = (e) => {
         if (Http.readyState === XMLHttpRequest.DONE && Http.status === 200) {

@@ -7,7 +7,7 @@ $(document).ready(function () {
   if (localStorage.getItem('auth') != null) {
     // Récupération de l'utilisateur courrant.
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5000/cards/user';
+    const url = 'http://localhost:5001/secured/cards/mine';
 
     Http.open("GET", url);
 
@@ -71,7 +71,7 @@ function sellCard(cardId) {
   if (localStorage.getItem('auth') != null) {
     // Récupération de l'utilisateur courrant.
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5000/cards/sell/' + cardId;
+    const url = 'http://localhost:5002/secured/market/sell/' + cardId;
 
     Http.open("PUT", url);
 
@@ -118,5 +118,3 @@ function switchToCard(cardId) {
 
   cardContainer.appendChild(clone);
 }
-
-
