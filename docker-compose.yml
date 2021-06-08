@@ -48,12 +48,10 @@ services:
 
   reverse-proxy:
     container_name: reverse-proxy
-    image: nginx:latest
+    build: reverseproxy
     restart: always
     ports:
       - "80:80"
-    volumes:
-      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
     networks:
       - api-network
 
