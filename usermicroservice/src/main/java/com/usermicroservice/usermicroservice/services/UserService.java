@@ -3,6 +3,7 @@ package com.usermicroservice.usermicroservice.services;
 import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.dto.UserLoginDTO;
+import com.asi.lib.exceptions.AsiException;
 import com.asi.lib.services.CrudService;
 import com.asi.lib.webservices.AuthWebService;
 import com.asi.lib.webservices.CardWebService;
@@ -46,7 +47,7 @@ public class UserService extends CrudService<User> implements IUserService {
         User user = ((UserRepository) this._repository).findByEmail(userLoginDTO.getLogin()).orElseThrow(() -> new RuntimeException("Email not found"));
 
         if (!this.passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Bad password");
+            throw new AsiException("Bad password");
         }
 
         return this.authWebService.getJWTToken(this.userMapper.fromUser(user));

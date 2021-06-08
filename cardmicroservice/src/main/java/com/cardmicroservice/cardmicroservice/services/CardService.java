@@ -37,10 +37,7 @@ public class CardService extends CrudService<Card> implements ICardService {
     }
 
     public List<CardDTO> getCurrentUserCards(UserDTO userDTO) {
-        return _cardRepository.getByUserId(userDTO.getId())
-                .stream()
-                .map(c -> _cardMapper.toDTO(c))
-                .collect(Collectors.toList());
+        return this._cardMapper.toDTOList(_cardRepository.getByUserId(userDTO.getId()));
     }
 
     public CardDTO createRandomCard(Long userId) {

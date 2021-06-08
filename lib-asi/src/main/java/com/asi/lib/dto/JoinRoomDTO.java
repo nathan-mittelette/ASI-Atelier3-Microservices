@@ -1,4 +1,4 @@
-package com.roommicroservice.roommicroservice.dto;
+package com.asi.lib.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRoomDto {
+public class JoinRoomDTO {
     Long cardId;
-    Long bet;
-    String name;
+    Long roomId;
 }

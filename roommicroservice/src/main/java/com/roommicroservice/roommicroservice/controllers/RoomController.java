@@ -1,9 +1,9 @@
 package com.roommicroservice.roommicroservice.controllers;
 
+import com.asi.lib.dto.CreateRoomDTO;
+import com.asi.lib.dto.JoinRoomDTO;
 import com.asi.lib.dto.RoomDTO;
 import com.asi.lib.dto.UserDTO;
-import com.roommicroservice.roommicroservice.dto.CreateRoomDto;
-import com.roommicroservice.roommicroservice.dto.JoinRoomDto;
 import com.roommicroservice.roommicroservice.services.iservices.IRoomService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +21,12 @@ public class RoomController {
     }
 
     @PostMapping()
-    public RoomDTO createRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody CreateRoomDto createRoomDto) {
+    public RoomDTO createRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody CreateRoomDTO createRoomDto) {
         return _roomService.createRoom(userDTO, createRoomDto);
     }
 
     @PutMapping()
-    public RoomDTO joinRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody JoinRoomDto joinRoomDto) throws Exception {
+    public RoomDTO joinRoom(@AuthenticationPrincipal final UserDTO userDTO, @RequestBody JoinRoomDTO joinRoomDto) {
         return _roomService.joinRoom(userDTO, joinRoomDto);
     }
 

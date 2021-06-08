@@ -1,4 +1,4 @@
-package com.usermicroservice.usermicroservice.exception;
+package com.asi.lib.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

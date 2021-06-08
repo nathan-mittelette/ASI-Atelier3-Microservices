@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends CrudRepository<Room, Long> {
+
     @Query(value = "SELECT * FROM public.room WHERE state = 'CREATED'", nativeQuery = true)
     List<Room> getAllCreated();
 }

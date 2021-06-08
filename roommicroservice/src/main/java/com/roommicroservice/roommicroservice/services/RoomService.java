@@ -4,10 +4,11 @@ import com.asi.lib.dto.CardDTO;
 import com.asi.lib.dto.RoomDTO;
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.enums.ERoomState;
+import com.asi.lib.exceptions.AsiException;
 import com.asi.lib.services.CrudService;
 import com.asi.lib.webservices.CardWebService;
-import com.roommicroservice.roommicroservice.dto.CreateRoomDto;
-import com.roommicroservice.roommicroservice.dto.JoinRoomDto;
+import com.asi.lib.dto.CreateRoomDTO;
+import com.asi.lib.dto.JoinRoomDTO;
 import com.roommicroservice.roommicroservice.mapper.RoomMapper;
 import com.roommicroservice.roommicroservice.models.Player;
 import com.roommicroservice.roommicroservice.models.Room;
@@ -17,7 +18,6 @@ import com.roommicroservice.roommicroservice.services.iservices.IRoomService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RoomService extends CrudService<Room> implements IRoomService {
@@ -36,7 +36,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
     }
 
     @Override
-    public RoomDTO createRoom(UserDTO userDTO, CreateRoomDto createRoomDto) {
+    public RoomDTO createRoom(UserDTO userDTO, CreateRoomDTO createRoomDto) {
         Player player = VerifyAndExtractPlayer(userDTO.getId(), createRoomDto.getCardId());
 
         Room room = new Room();
@@ -50,7 +50,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
         return _roomMapper.toDTO(room);
     }
 
-    public RoomDTO joinRoom(UserDTO userDTO, JoinRoomDto joinRoomDto) {
+    public RoomDTO joinRoom(UserDTO userDTO, JoinRoomDTO joinRoomDto) {
         Room room = _repository.findById(joinRoomDto.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found"));
 
         Player player = VerifyAndExtractPlayer(userDTO.getId(), joinRoomDto.getCardId());
@@ -72,7 +72,7 @@ public class RoomService extends CrudService<Room> implements IRoomService {
         CardDTO card = _cardWebService.getById(cardId);
 
         if (card.getUserId() == null || !card.getUserId().equals(userId)) {
-            throw new RuntimeException("Invalid owner");
+            throw new AsiException("Invalid owner");
         }
 
         Player player = new Player();

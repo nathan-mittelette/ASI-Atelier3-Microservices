@@ -1,6 +1,7 @@
 package com.authmicroservice.authmicroservice.services;
 
 import com.asi.lib.dto.UserDTO;
+import com.asi.lib.exceptions.AsiException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
@@ -49,13 +50,17 @@ public class AuthService implements IAuthService {
         }
     }
 
-    public UserDTO getUser(String token) throws Exception {
+    public UserDTO getUser(String token) throws AsiException {
         DecodedJWT decodedJWT = getDecodedJWT(token);
-        UserDTO userDTO = new ObjectMapper().readValue(decodedJWT.getSubject(), UserDTO.class);
-        if (userDTO == null) {
-            throw new Exception("Bad Token");
+        try {
+            UserDTO userDTO = new ObjectMapper().readValue(decodedJWT.getSubject(), UserDTO.class);
+            if (userDTO == null) {
+                throw new AsiException("Bad Token");
+            }
+            return userDTO;
+        } catch (Exception e) {
+            throw new AsiException(e.getMessage());
         }
-        return userDTO;
     }
 
     private DecodedJWT getDecodedJWT(String token) throws JWTVerificationException {
