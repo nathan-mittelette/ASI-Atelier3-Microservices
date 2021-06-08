@@ -8,7 +8,7 @@
         <groupId>com.asi</groupId>
         <artifactId>asi-core</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.asi.lib</groupId>
