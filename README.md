@@ -1,5 +1,9 @@
 # ASI Step 3
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asi-microservice&metric=alert_status)](https://sonarcloud.io/dashboard?id=asi-microservice)
+
+[![Build Status](https://travis-ci.org/nathan-mittelette/ASI-Atelier3-Microservices.svg?branch=master)](https://travis-ci.org/nathan-mittelette/ASI-Atelier3-Microservices)
+
 ## Compilation du projet
 
 Chaque microservice ou library du projet est un module du `pom.xml` présent à la racine du projet. Lorsque vous
