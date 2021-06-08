@@ -2,6 +2,7 @@ package com.asi.lib.tests;
 
 import com.asi.lib.dto.UserDTO;
 import com.asi.lib.webservices.AuthWebService;
+import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletRequest;
 
