@@ -1,0 +1,48 @@
+git:
+  depth: false
+
+stages:
+  - "Build and Test"
+  - "Sonar cloud"
+  - "Maven package and Docker build and publish"
+
+jobs:
+  include:
+    - stage: "Build and Test"
+      language: java
+      jdk: oraclejdk11
+      script:
+        - echo "Maven build and test"
+        - mvn clean verify
+
+    - stage: "Sonar cloud"
+      language: java
+      jdk: oraclejdk11
+      script:
+        - echo "JaCoCo and Sonar analyzes."
+        - mvn clean install sonar:sonar -Dsonar.projectKey=asi-microservice -DskipTests
+
+    - stage: "Maven package and Docker build and publish"
+      language: java
+      jdk: oraclejdk11
+      script:
+        - echo "Maven Package build"
+        - mvn clean package -DskipTests
+        - echo "Docker login"
+        - echo "$docker_hub_password" | docker login -u "$docker_hub_username" --password-stdin
+        - echo "Docker build"
+        - docker-compose build
+        - echo "Docker publish"
+        - docker-compose push
+
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "nathan-mittelette"
+    token: "$sonar_token"

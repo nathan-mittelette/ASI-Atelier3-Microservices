@@ -1,13 +1,15 @@
-version: '3.7'
+version: '3.3'
 services:
   auth-api-service:
     build: authmicroservice
+    image: nathanmittelette/auth-api-service
     ports:
       - "5000:5000"
     networks:
       - api-network
   card-api-service:
     build: cardmicroservice
+    image: nathanmittelette/card-api-service
     depends_on:
       - card-database-service
     environment:
@@ -21,6 +23,7 @@ services:
     networks:
       - card-network
       - api-network
+
   card-database-service:
     image: 'postgres:13.2-alpine'
     restart: always
@@ -37,6 +40,7 @@ services:
 
   market-api-service:
     build: marketmicroservice
+    image: nathanmittelette/market-api-service
     ports:
       - "5002:5002"
     networks:
@@ -48,6 +52,7 @@ services:
 
   reverse-proxy:
     container_name: reverse-proxy
+    image: nathanmittelette/reverse-proxy
     build: reverseproxy
     ports:
       - "80:80"
@@ -56,6 +61,7 @@ services:
 
   room-api-service:
     build: roommicroservice
+    image: nathanmittelette/room-api-service
     depends_on:
       - room-database-service
     environment:
@@ -83,6 +89,7 @@ services:
 
   user-api-service:
     build: usermicroservice
+    image: nathanmittelette/user-api-service
     depends_on:
       - user-database-service
     environment:

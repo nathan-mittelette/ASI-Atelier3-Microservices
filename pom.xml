@@ -28,6 +28,8 @@
 
         <spring.version>2.4.5</spring.version>
         <lombok.version>1.18.8</lombok.version>
+
+        <sonar.language>java</sonar.language>
     </properties>
 
     <dependencyManagement>
